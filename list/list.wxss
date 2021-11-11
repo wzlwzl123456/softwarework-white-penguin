@@ -1,0 +1,101 @@
+/* pages/list/list.wxss */
+.searchWrap{
+    background-color:dodgerblue;
+    position: absolute;
+    width:790rpx;
+    height:90rpx;
+}
+.butt{
+    top:15rpx;
+    border-radius: 20rpx;
+    height:60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bottom{
+    position: absolute;
+    top:100rpx;
+    width:90%;
+    margin: 0 5%;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+}
+.bottom1{
+    position: absolute;
+    top:200rpx;
+    width:90%;
+    margin: 0 5%;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+}
+
+.midButton{
+    color:black;
+    border:1px solid black;
+}
+.leftButton{
+    position: absolute;
+    color:black;
+    border:1px solid black;
+}
+.rightButton{
+    position:absolute;
+    right:0%;
+    color: black;
+    border: 1px solid black;
+}
+.listTableWrap{
+    position: absolute;
+    width: 790rpx;
+    height: 1500rpx;
+    left: 50%;
+    margin-left: -395rpx;
+    top: 200rpx;
+    overflow-y: scroll;/*显示滚动条*/
+    overflow-x: hidden;/*不显示滚动条*/
+}
+.table{
+    border:1px solid #dadada;
+    border-right:0;
+    border-bottom: 0;
+    width: 98%;
+    margin-left:1%;
+}
+.tr_title{
+    width: 80%;
+    margin-left: 10%;
+    font-size: 50rpx;
+    color: black;
+    display: flex;
+    justify-content:left;
+    text-align:center;
+}
+.tr_synopsis{
+    margin-left: 10%;
+    width: 80%;
+    color: gray;
+    display: flex;
+    word-wrap:break-word;
+    word-break: break-all;
+    white-space:pre-line;
+    justify-content: left;
+    text-align:left;
+}
+.tr_platform{
+    width: 50%;
+    margin-left: 10%;
+    color: green;
+    display: flex;
+    justify-content: left;
+    text-align: center;
+}
+.tr_click{
+    width: 30%;
+    margin-left: 70%;
+    display: flex;
+    justify-content: right;
+    text-align: right;
+}
