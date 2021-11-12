@@ -16,7 +16,7 @@ Page({
         this.setData({
             url:_url
         })
-        console.log(this.data.url);
+        //console.log(this.data.url);
     },
 
     /**

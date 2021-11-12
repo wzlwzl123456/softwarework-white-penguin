@@ -12,137 +12,117 @@ Page({
         monthFlag:0,
         specialFlag:0,
         classify:0,
-        dailyList:[{
-            url:'https://tcb-api.tencentcloudapi.com',
+        /**
+         * 榜单文章相关数据
+         */
+        dataList:[{
+            url:'https://www.baidu.com',
             title:'标题1',
             synopsis:'efghijklmnopqrstfdiafushafuoehwiofhoidshaoifhefhuvwxyz',
             platform:'CSDN',
             click:1,
-            rank:0
+            rank:1
         },{
             url:'https://www.bilibili.com/',
-            title:'title b',
-            synopsis:'synopsis b',
+            title:'标题2',
+            synopsis:'简介abcdefghijklmnopqrstuvwxyz',
             platform:'Github',
             click:2,
-            rank:1
-        },{
-            url:'c',
-            title:'title c',
-            synopsis:'synopsis c',
-            platform:'openSouce',
-            click:3,
             rank:2
         },{
-            title:'title a',
-            synopsis:'synopsis a',
-            platform:'platform a',
-            click:1,
-            rank:0
-        },{
-            title:'title b',
-            synopsis:'synopsis b',
-            platform:'platform b',
-            click:2,
-            rank:1
-        },{
-            title:'title c',
-            synopsis:'synopsis c',
-            platform:'platform c',
+            url:'https://www.douyu.com/',
+            title:'标题3',
+            synopsis:'简介3',
+            platform:'OpenSouce',
             click:3,
-            rank:2
+            rank:3
         },{
-            title:'title a',
-            synopsis:'synopsis a',
-            platform:'platform a',
-            click:1,
-            rank:0
-        },{
-            title:'title b',
-            synopsis:'synopsis b',
-            platform:'platform b',
-            click:2,
-            rank:1
-        },{
-            title:'title c',
-            synopsis:'synopsis c',
-            platform:'platform c',
-            click:3,
-            rank:2
-        }],
-        monthList:[{
-            url:'https://goole.com/',
-            title:'title d',
-            synopsis:'synopsis d',
-            platform:'platform d',
+            url:'https://www.huya.com/',
+            title:'标题4',
+            synopsis:'简介4',
+            platform:'平台4',
             click:4,
-            rank:0
+            rank:4
         },{
-            title:'title e',
-            synopsis:'synopsis e',
-            platform:'platform e',
+            url:'https://lol.qq.com/',
+            title:'标题5',
+            synopsis:'简介5',
+            platform:'平台5',
             click:5,
-            rank:1
+            rank:5
         },{
-            title:'title f',
-            synopsis:'synopsis f',
-            platform:'platform f',
+            url:'https://lol.qq.com/',
+            title:'标题6',
+            synopsis:'简介6',
+            platform:'平台6',
             click:6,
-            rank:2
-        }],
-        specialList:[{
-            url:'https://www.qq.com/',
-            title:'classA',
-            synopsis:'asdfafdsaf',
-            platform:'bilibili',
-            click:1,
-            class:1,
+            rank:6
         },{
-            title:'classB',
-            synopsis:'dsaffb',
-            platform:'CCTV',
-            click:2,
-            class:2
-        },{
-            title:'classC',
-            synopsis:'c',
-            platform:'csdn',
-            click:3,
-            class:3
-        },{
-            title:'classd',
-            synopsis:'c',
-            platform:'agefans',
-            click:3,
-            class:1
+            url:'https://lol.qq.com/',
+            title:'标题7',
+            synopsis:'简介7',
+            platform:'平台7',
+            click:7,
+            rank:7
         }]
     },
-    gotodailyUrl:function(e){
-        wx.setStorageSync('web1',this.data.dailyList[e.currentTarget.dataset.index].url);
-        console.log(wx.getStorageSync('web1'));
+    /**
+     * 发送点击信号给后端
+     */
+    sendMsg:function(){
+        var that=this;//重置data{}里数据时候setData方法的this应为这里的this，如果在下方的success直接写this就变成wx.request的this了
+        console.log(wx.getStorageSync('userinfo'))
+        wx.request({
+          url: 'https://tcb-api.tencentcloudapi.com',//请求地址
+          data:{
+                url:wx.getStorageSync('web1'),
+                userinfo:wx.getStorageSync('userinfo')
+          },//发送给后台的数据
+          
+          header:{
+              'content-type':'application/json'
+          },//请求头
+          method:'POST',
+          dataType:'json',
+          success:function(res){
+              console.log(res.data);//res.data为后台返回的数据
+              that.setData({//用that而不是this，用this就是success的this就错了
+                    //dataList:res.data
+              })
+          },
+          fail:function(err){},//请求失败
+          complete:function(){}//请求完成后执行的函数
+        })
+    },
+    /**
+     * 点击跳转文章对应外部页面、该文章点击量+1
+     */
+    gotoURL:function(e){
+        wx.setStorageSync('web1',this.data.dataList[e.currentTarget.dataset.index].url)
+        console.log(wx.getStorageSync('web1'))
+        // var idx=e.currentTarget.dataset.index
+        // var num=this.data.dataList[idx].click+1
+        // var temp='dataList['+idx+'].click'
+        // this.setData({
+        //     [temp]:num
+        // })
+        // console.log(this.data.dataList[idx].click);
         wx.navigateTo({
           url:'/pages/out/out'
         })
+        this.sendMsg()
     },
-    gotomonthUrl:function(e){
-        wx.setStorageSync('web1',this.data.monthList[e.currentTarget.dataset.index].url);
-        console.log(wx.getStorageSync('web1'));
-        wx.navigateTo({
-          url:'/pages/out/out'
-        })
-    },
-    gotoSpecialUrl:function(e){
-        wx.setStorageSync('web1',this.data.specialList[e.currentTarget.dataset.index].url);
-        console.log(wx.getStorageSync('web1'));
-        wx.navigateTo({
-          url:'/pages/out/out'
-        })
-    },
+    /**
+     * 跳转搜索页面
+     */
     gotoSearch:function(){
         wx.navigateTo({
             url: '/pages/search/search'
           })
     },
+    /**
+     * 设置展示日榜样式
+     */
     showDailylist:function(e){
         this.setData({
             dailyFlag:1,
@@ -152,7 +132,14 @@ Page({
             monthColor:'white',
             specialColor:'white'
         })
+        this.getMsg()
+        console.log(this.data.dailyFlag)
+        console.log(this.data.monthFlag)
+        console.log(this.data.specialFlag)
     },
+    /**
+     * 设置展示月榜样式
+     */
     showMonthList:function(e){
         this.setData({
             dailyFlag:0,
@@ -162,7 +149,14 @@ Page({
             monthColor:'dodgerblue',
             specialColor:'white'
         })
+        this.getMsg()
+        console.log(this.data.dailyFlag)
+        console.log(this.data.monthFlag)
+        console.log(this.data.specialFlag)
     },
+    /**
+     * 设置展示专区样式
+     */
     showSpecialArea:function(e){
         this.setData({
             dailyFlag:0,
@@ -172,38 +166,67 @@ Page({
             monthColor:'white',
             specialColor:'dodgerblue'
         })
+        this.getMsg()
+        console.log(this.data.dailyFlag)
+        console.log(this.data.monthFlag)
+        console.log(this.data.specialFlag)
     },
+    /**
+     * 专区分类1
+     */
     classification1:function(e){
         this.setData({
             classify:1
         })
+        this.getMsg()
+        console.log(this.data.classify)
     },
+    /**
+     * 专区分类2
+     */
     classification2:function(e){
         this.setData({
             classify:2
         })
+        this.getMsg()
+        console.log(this.data.classify)
     },
+    /**
+     * 专区分类3
+     */
     classification3:function(e){
         this.setData({
             classify:3
         })
+        this.getMsg()
+        console.log(this.data.classify)
     },
+    /**
+     * 获取榜单数据
+     */
     getMsg:function(){
+        var that=this;//重置data{}里数据时候setData方法的this应为这里的this，如果在下方的success直接写this就变成wx.request的this了
         wx.request({
-          url: 'https://tcb-api.tencentcloudapi.com',
+          url: 'https://tcb-api.tencentcloudapi.com',//请求地址
           data:{
-
-          },
-          method:'GET',
-        //   header:{
-        //       'content-type':'application/json'
-        //   },
-          success(res){
-              console.log(res.data);
-              this.setData({
-                //   'dailyList[0].url':res.data
+                dailyFlag:that.data.dailyFlag,
+                monthFlag:that.data.monthFlag,
+                specialFlag:that.data.specialFlag,
+                classify:that.data.classify
+          },//发送给后台的数据
+          header:{
+              'content-type':'application/json'
+          },//请求头
+          method:'POST',
+          dataType:'json',
+          success:function(res){
+              console.log(res.data);//res.data为后台返回的数据
+              that.setData({//用that而不是this，用this就是success的this就错了
+                    //dataList:res.data
               })
-          }
+          },
+          fail:function(err){},//请求失败
+          complete:function(){}//请求完成后执行的函数
         })
     },
     /**
@@ -211,54 +234,52 @@ Page({
      */
     onLoad: function (options) {
         this.getMsg();
+        wx.login({
+            success:res=>{
+                console.log(res,'login')
+                wx.request('url',{
+                  code:res.code
+                },
+                function(res){
+                    var userinfo=res.data.data;
+                    wx.setStorageSync('userinfo', userinfo);
+                })
+            }
+        })
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
-
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
-
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
-
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
-
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
-
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
-
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
     }
 })
