@@ -1,41 +1,47 @@
-
 <!-- 顶部搜索栏 -->
 <view class='searchWrap'>
     <button class="butt" bindtap="gotoSearch" style="width:600rpx">
         <!-- <image></image> -->
         <text>搜索</text>
-    </button> 
+    </button>
 </view>
 
 <!-- 展示日榜、月榜、专区按钮 -->
 <view class="bottom">
-    <button size="mini" class="midButton" style="background-color: {{dailyColor}};"  bindtap="showDailylist">日榜</button>
+    <button size="mini" class="midButton" style="background-color: {{dailyColor}};" bindtap="showDailylist">日榜</button>
     <button size="mini" class="leftButton" style="background-color: {{monthColor}};" bindtap="showMonthList">月榜</button>
-    <button size="mini" class="rightButton" style="background-color: {{specialColor}};" bindtap="showSpecialArea">专区</button>
+    <button size="mini" class="rightButton" style="background-color: {{specialColor}};"
+        bindtap="showSpecialArea">专区</button>
 </view>
 
 <!--  展示日榜或月榜文章 -->
 <view class='listTableWrap' wx:if="{{specialFlag==0}}">
     <view class="table" wx:for="{{dataList}}" data-index="{{index}}" bindtap="gotoURL">
-        <view class="tr_title">{{dataList[index].title}}</view>
+        <view class="tr_titleBox">
+            <view class="tr_title">{{dataList[index].title}}</view>
+            <buttom class="tr_like" catchtap="sendLike" data-index="{{index}}">
+                <image mode="widthFix" src="/images/heart.png" wx:if="{{dataList[index].like==0}}"></image>
+                <image mode="widthFix" src="/images/heart (1).png" wx:if="{{dataList[index].like==1}}"></image>
+            </buttom>
+        </view>
         <view class="tr_synopsis">{{dataList[index].synopsis}}</view>
         <view class="tr_platform">{{dataList[index].platform}}</view>
         <view class="tr_click">点击量：{{dataList[index].click}}</view>
-    </view> 
+    </view>
 </view>
 
 <!-- 展示专区的按钮 -->
-<view class="bottom1"  wx:if="{{specialFlag==1}}">
-        <button size="mini" bindtap="classification1">c++</button>
-        <button size="mini" bindtap="classification2">java</button>
-        <button size="mini" bindtap="classification3">python</button>
+<view class="bottom1" wx:if="{{specialFlag==1}}">
+    <button size="mini" bindtap="classification1">c++</button>
+    <button size="mini" bindtap="classification2">java</button>
+    <button size="mini" bindtap="classification3">python</button>
 </view>
 <!-- 展示专区的文章 -->
 <view class='listTableWrap' style="top: 280rpx;" wx:if="{{specialFlag==1}}">
-    <view class="table" wx:for="{{dataList}}"   data-index="{{index}}" bindtap="gotoURL">
+    <view class="table" wx:for="{{dataList}}" data-index="{{index}}" bindtap="gotoURL">
         <view class="tr_title">{{dataList[index].title}}</view>
         <view class="tr_synopsis">{{dataList[index].synopsis}}</view>
         <view class="tr_platform">{{dataList[index].platform}}</view>
         <view class="tr_click">点击量：{{dataList[index].click}}</view>
-    </view> 
+    </view>
 </view>

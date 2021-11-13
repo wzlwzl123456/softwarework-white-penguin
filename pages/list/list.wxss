@@ -1,90 +1,115 @@
 /* pages/list/list.wxss */
-.searchWrap{
-    background-color:dodgerblue;
+.searchWrap {
+    background-color: dodgerblue;
     position: absolute;
-    width:790rpx;
-    height:90rpx;
+    width: 790rpx;
+    height: 90rpx;
 }
-.butt{
-    top:15rpx;
+
+.butt {
+    top: 15rpx;
     border-radius: 20rpx;
-    height:60rpx;
+    height: 60rpx;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.bottom{
+
+.bottom {
     position: absolute;
-    top:100rpx;
-    width:90%;
+    top: 100rpx;
+    width: 90%;
     margin: 0 5%;
     display: flex;
-    flex-direction: row; 
-    align-items: center;
-}
-.bottom1{
-    position: absolute;
-    top:200rpx;
-    width:90%;
-    margin: 0 5%;
-    display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     align-items: center;
 }
 
-.midButton{
-    color:black;
-    border:1px solid black;
-}
-.leftButton{
+.bottom1 {
     position: absolute;
-    color:black;
-    border:1px solid black;
+    top: 200rpx;
+    width: 90%;
+    margin: 0 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-.rightButton{
-    position:absolute;
-    right:0%;
+
+.midButton {
     color: black;
     border: 1px solid black;
 }
-.listTableWrap{
+
+.leftButton {
+    position: absolute;
+    color: black;
+    border: 1px solid black;
+}
+
+.rightButton {
+    position: absolute;
+    right: 0%;
+    color: black;
+    border: 1px solid black;
+}
+
+.listTableWrap {
     position: absolute;
     width: 790rpx;
     height: 1500rpx;
     left: 50%;
     margin-left: -395rpx;
     top: 200rpx;
-    overflow-y: scroll;/*显示滚动条*/
-    overflow-x: hidden;/*不显示滚动条*/
+    overflow-y: scroll;
+    /*显示滚动条*/
+    overflow-x: hidden;
+    /*不显示滚动条*/
 }
-.table{
-    border:1px solid #dadada;
-    border-right:0;
+
+.table {
+    border: 1px solid #dadada;
+    border-right: 0;
     border-bottom: 0;
     width: 98%;
-    margin-left:1%;
+    margin-left: 1%;
 }
-.tr_title{
-    width: 80%;
+
+.tr_titleBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.tr_title {
+    width: 70%;
     margin-left: 10%;
     font-size: 50rpx;
     color: black;
-    display: flex;
-    justify-content:left;
-    text-align:center;
+    justify-content: left;
+    text-align: left;
 }
-.tr_synopsis{
+
+.tr_like {
+    margin-top: 1%;
+    width: 8%;
+}
+
+.tr_like image {
+    width: 100%;
+}
+
+.tr_synopsis {
     margin-left: 10%;
     width: 80%;
     color: gray;
     display: flex;
-    word-wrap:break-word;
+    word-wrap: break-word;
     word-break: break-all;
-    white-space:pre-line;
+    white-space: pre-line;
     justify-content: left;
-    text-align:left;
+    text-align: left;
 }
-.tr_platform{
+
+.tr_platform {
     width: 50%;
     margin-left: 10%;
     color: green;
@@ -92,7 +117,8 @@
     justify-content: left;
     text-align: center;
 }
-.tr_click{
+
+.tr_click {
     width: 30%;
     margin-left: 70%;
     display: flex;
