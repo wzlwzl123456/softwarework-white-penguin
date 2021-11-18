@@ -22,7 +22,7 @@
     margin: 0 5%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .bottom1 {
@@ -35,18 +35,15 @@
     align-items: center;
 }
 
-.midButton {
-    color: black;
-    border: 1px solid black;
-}
-
 .leftButton {
+    margin-left: 20%;
     position: absolute;
     color: black;
     border: 1px solid black;
 }
 
 .rightButton {
+    margin-right: 20%;
     position: absolute;
     right: 0%;
     color: black;
@@ -70,6 +67,7 @@
     border: 1px solid #dadada;
     border-right: 0;
     border-bottom: 0;
+    /* height:20%; */
     width: 98%;
     margin-left: 1%;
 }
@@ -98,15 +96,20 @@
 }
 
 .tr_synopsis {
+    font-size: 35rpx;
     margin-left: 10%;
     width: 80%;
+    height: 135rpx;
     color: gray;
-    display: flex;
+    display: -webkit-box;
     word-wrap: break-word;
     word-break: break-all;
-    white-space: pre-line;
     justify-content: left;
     text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 
 .tr_platform {
