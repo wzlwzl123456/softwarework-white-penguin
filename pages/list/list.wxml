@@ -14,8 +14,15 @@
         bindtap="showSpecialArea">专区</button>
 </view>
 
-<!--  展示日榜或月榜文章 -->
-<view class='listTableWrap' wx:if="{{specialFlag==0}}">
+<!-- 展示专区的按钮 -->
+<view class="bottom1" wx:if="{{specialFlag==1}}">
+    <button size="mini" bindtap="classification1">osChina</button>
+    <button size="mini" bindtap="classification2">CSDN</button>
+    <button size="mini" bindtap="classification3">gitHub</button>
+</view>
+
+<!--  本地测试版：展示日榜或月榜文章 -->
+<!-- <view class='listTableWrap' wx:if="{{specialFlag==0}}">
     <view class="table" wx:for="{{dataList}}" data-index="{{index}}" bindtap="gotoURL">
         <view class="tr_titleBox">
             <view class="tr_title">{{dataList[index].title}}</view>
@@ -28,20 +35,40 @@
         <view class="tr_platform">{{dataList[index].platform}}</view>
         <view class="tr_click">点击量：{{dataList[index].click}}</view>
     </view>
-</view>
+</view> -->
 
-<!-- 展示专区的按钮 -->
-<view class="bottom1" wx:if="{{specialFlag==1}}">
-    <button size="mini" bindtap="classification1">c++</button>
-    <button size="mini" bindtap="classification2">java</button>
-    <button size="mini" bindtap="classification3">python</button>
-</view>
-<!-- 展示专区的文章 -->
-<view class='listTableWrap' style="top: 280rpx;" wx:if="{{specialFlag==1}}">
+<!-- 本地测试版：展示专区的文章 -->
+<!-- <view class='listTableWrap' style="top: 280rpx;" wx:if="{{specialFlag==1}}">
     <view class="table" wx:for="{{dataList}}" data-index="{{index}}" bindtap="gotoURL">
         <view class="tr_title">{{dataList[index].title}}</view>
         <view class="tr_synopsis">{{dataList[index].synopsis}}</view>
         <view class="tr_platform">{{dataList[index].platform}}</view>
         <view class="tr_click">点击量：{{dataList[index].click}}</view>
+    </view>
+</view> -->
+
+<!--  正式版：展示日榜或月榜文章 -->
+<view class='listTableWrap' wx:if="{{specialFlag==0}}">
+    <view class="table" wx:for="{{list}}" data-index="{{index}}" bindtap="gotoURL">
+        <view class="tr_titleBox">
+            <view class="tr_title">{{list[index].blogTitle}}</view>
+            <buttom class="tr_like" catchtap="sendLike" data-index="{{index}}">
+                <image mode="widthFix" src="/images/heart.png" wx:if="{{list[index].like==0}}"></image>
+                <image mode="widthFix" src="/images/heart (1).png" wx:if="{{list[index].like==1}}"></image>
+            </buttom>
+        </view>
+        <view class="tr_synopsis">{{list[index].blogBrief}}</view>
+        <view class="tr_platform">osChina</view>
+        <view class="tr_click">点击量：{{list[index].id}}</view>
+    </view>
+</view>
+
+<!-- 正式版：展示专区的文章 -->
+<view class='listTableWrap' style="top: 280rpx;" wx:if="{{specialFlag==1}}">
+    <view class="table" wx:for="{{list}}" data-index="{{index}}" bindtap="gotoURL">
+        <view class="tr_title">{{list[index].blogTitle}}</view>
+        <view class="tr_synopsis">{{list[index].blogBrief}}</view>
+        <view class="tr_platform">osChina</view>
+        <view class="tr_click">点击量：{{list[index].id}}</view>
     </view>
 </view>

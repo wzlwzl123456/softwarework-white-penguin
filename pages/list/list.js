@@ -13,10 +13,15 @@ Page({
         specialFlag: 0,
         classify: 0,
         /**
-         * 榜单文章相关数据
+         * 正式版：榜单文章相关数据
+         */
+        list:[
+            ],
+        /**
+         * 本地测试版：榜单文章相关数据
          */
         dataList: [{
-            url: 'https://www.baidu.com',
+            url: 'https://www.oschina.net/news/169426',
             title: '标题1',
             synopsis: 'efghijklmnopqrstfdiafushafuoehwiofhoidshaoifhefhuvwxyz',
             platform: 'CSDN',
@@ -78,23 +83,21 @@ Page({
      */
     sendMsg: function () {
         var that = this; //重置data{}里数据时候setData方法的this应为这里的this，如果在下方的success直接写this就变成wx.request的this了
-        //console.log(wx.getStorageSync('userinfo'))
         wx.request({
-            url: 'https://tcb-api.tencentcloudapi.com', //请求地址
-            data: {
+            url: 'http://127.0.0.1:5000/', //请求地址
+            data: {//传所点击的URL和用户信息
                 url: wx.getStorageSync('web1'),
                 userinfo: wx.getStorageSync('userinfo')
             }, //发送给后台的数据
-
             header: {
                 'content-type': 'application/json'
             }, //请求头
-            method: 'POST',
+            method: 'GET',
             dataType: 'json',
             success: function (res) {
                 console.log(res.data); //res.data为后台返回的数据
                 that.setData({ //用that而不是this，用this就是success的this就错了
-                    //dataList:res.data
+                    list:res.data.result
                 })
             },
             fail: function (err) {}, //请求失败
@@ -106,25 +109,23 @@ Page({
      */
     sendLike: function (e) {
         // console.log(e.currentTarget.dataset.index)
-        var _url = this.data.dataList[e.currentTarget.dataset.index].url
-        var _like = this.data.dataList[e.currentTarget.dataset.index].like
+        var _url = this.data.list[e.currentTarget.dataset.index].blogUrl
         var that = this;
         wx.request({
-            url: 'https://tcb-api.tencentcloudapi.com',
-            data: {
+            url: 'http://127.0.0.1:5000/',
+            data: {//传递给后端的数据：所点击的URL和用户信息
                 url: _url,
                 userinfo: wx.getStorageSync('userinfo'),
-                like: _like
             },
             header: {
                 'content-type': 'application/json'
             },
-            method: 'POST',
+            method: 'GET',
             dataType: 'json',
             success: function (res) {
                 console.log(res.data); //res.data为后台返回的数据
                 that.setData({ //用that而不是this，用this就是success的this就错了
-                    //dataList:res.data
+                    list:res.data.result
                 })
             },
             fail: function (err) {}, //请求失败
@@ -134,8 +135,18 @@ Page({
     /**
      * 点击跳转文章对应外部页面、该文章点击量+1
      */
+    //测试版：
+    // gotoURL: function (e) {
+    //     wx.setStorageSync('web1', this.data.dataList[e.currentTarget.dataset.index].url)
+    //     console.log(wx.getStorageSync('web1'))
+    //     wx.navigateTo({
+    //         url: '/pages/out/out'
+    //     })
+    //     this.sendMsg()
+    // },
+    //正式版：
     gotoURL: function (e) {
-        wx.setStorageSync('web1', this.data.dataList[e.currentTarget.dataset.index].url)
+        wx.setStorageSync('web1', this.data.list[e.currentTarget.dataset.index].blogUrl)
         console.log(wx.getStorageSync('web1'))
         wx.navigateTo({
             url: '/pages/out/out'
@@ -237,23 +248,26 @@ Page({
     getMsg: function () {
         var that = this; //重置data{}里数据时候setData方法的this应为这里的this，如果在下方的success直接写this就变成wx.request的this了
         wx.request({
-            url: 'https://tcb-api.tencentcloudapi.com', //请求地址
+            url: 'http://127.0.0.1:5000/', //请求地址
             data: {
-                dailyFlag: that.data.dailyFlag,
-                monthFlag: that.data.monthFlag,
-                specialFlag: that.data.specialFlag,
-                classify: that.data.classify
+                userinfo:wx.getStorageSync('userinfo'),//用户信息
+                dailyFlag:this.data.dailyFlag,//为1：要日榜信息
+                monthFlag:this.data.monthFlag,//为1：要月榜
+                specialFlag:this.data.specialFlag,//为1：要专区
+                classify:this.data.classify//表示专区内分类，1：osChina 2:CSDN 3:github
             }, //发送给后台的数据
             header: {
                 'content-type': 'application/json'
             }, //请求头
-            method: 'POST',
+            method: 'GET',
             dataType: 'json',
             success: function (res) {
-                console.log(res.data); //res.data为后台返回的数据
+               //console.log(res.data); //res.data为后台返回的数据
                 that.setData({ //用that而不是this，用this就是success的this就错了
-                    //dataList:res.data
+                    list:res.data.result
                 })
+                console.log(that.data.list)
+                console.log(that.data.dataList)
             },
             fail: function (err) {}, //请求失败
             complete: function () {} //请求完成后执行的函数
@@ -263,7 +277,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.getMsg();
         wx.login({
             success: res => {
                 console.log(res, 'login')
@@ -276,6 +289,7 @@ Page({
                     })
             }
         })
+        this.getMsg()
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
