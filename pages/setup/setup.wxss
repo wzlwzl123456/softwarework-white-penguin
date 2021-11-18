@@ -1,0 +1,42 @@
+/* pages/page1/page1.wxss */
+/* 上册外边框*/
+.box1{
+  border: 1px solid silver;
+  padding: 36rpx;
+  padding: 20rpx;
+  background-color: rgb(92, 92, 245);
+}
+/* 下侧外边框 */
+.box2{
+  border: 1px solid silver;
+  margin: 20rpx;
+  padding: 90rpx;
+  margin-top:5% ;
+  border-radius: 3%;
+}
+/* 设置小字 */
+.zi{
+  margin-left: 43%;
+  color: white;
+}
+/* 订阅推送小字*/
+.dt{
+  margin-bottom: 12%;
+  margin-left:-13% ;
+}
+/* 关注推送小字*/
+.gt{
+  margin-left:-13% ;
+}
+/* 退出登录 */
+.tc{
+  color:rgb(90, 123,224);
+}
+/* 开关1 */
+.sw1{
+  margin-left:50%;
+}
+/* 开关2*/
+.sw2{
+  margin-left:50% ;
+}

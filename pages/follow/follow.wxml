@@ -1,0 +1,20 @@
+<!--pages/page3/page3.wxml-->
+<view >
+	<view class="nav">
+		<view class="item {{current == '0' ? 'active' : ''}}" catchtap="onClick" data-id="0">订阅</view>
+		<view class="item {{current == '1' ? 'active' : ''}}" catchtap="onClick" data-id="1">关注</view>
+		
+	</view>
+	<view class="list">
+		<block wx:for="{{newslist}}" wx:for-index="idx" wx:key="key">
+			<view class="detail" wx:if="{{idx == current}}">			
+			</view>		
+		</block>	
+	</view>
+	<view class="lb" wx:for="{{ll}}">
+		<view class="lb1">{{item.f}}</view>
+		<view class="lb2">{{item.s}}</view>
+	</view>
+	<view style="width:100%;height:0rpx;border-bottom-style: solid;border-bottom-color: black;border-bottom-width: 1rpx;"></view>
+	
+</view>

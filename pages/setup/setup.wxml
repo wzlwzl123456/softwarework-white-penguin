@@ -1,0 +1,7 @@
+<!-- 上侧外边框-->
+
+<view class="box2">
+<view class="dt">订阅推送<switch class="sw1" color="rgb(90, 123, 224)"></switch></view>
+<view class="gt">关注推送<switch class="sw2" color="rgb(90, 123, 224)"></switch></view>
+</view>
+<button class="tc" bindtap="jump">退出登录</button>

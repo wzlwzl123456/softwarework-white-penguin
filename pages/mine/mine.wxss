@@ -1,0 +1,137 @@
+/* pages/navigation/navigation.wxss *//* pages/index/index.wxss */
+/* 头像 */
+.map{
+  width: 100%;
+  height: 550rpx;
+}
+
+.vi1{
+  position: absolute;
+  z-index: 1;
+  width: 600rpx;
+  height: 120rpx;
+  top: 7%;
+  left: 10%;
+}
+.vi2{
+  position: absolute;
+  z-index: 1;
+  width: 180rpx;
+  height: 100rpx;
+  top: 2%;
+  left: 85%;
+}
+/* 头像 */
+.compss{
+  width: 180rpx;
+  height: 100%;
+  border-radius: 100rpx;
+  margin-top:-40rpx ;
+  
+}
+
+/* 图标设置 */
+.vi4{
+  /* position: absolute; */
+  
+  margin-top: 700rpx; 
+  width: 100%;
+  margin-left: 75%;
+}
+/* 收藏夹*/
+.vi8{
+  /* position: absolute; */
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 200rpx;
+  border-radius: 30rpx;
+  margin-top: 220rpx;
+  margin-left: 3%;
+}
+/* 订阅&关注*/
+.vi88{
+  /* position: absolute; */
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 200rpx;
+  border-radius: 30rpx;
+  margin-top: 220rpx;
+  margin-left: 60%;
+}
+/* 收藏，关注&订阅 */
+.ceshi{
+  width: 200rpx;
+  height: 200rpx;
+  display: flexbox;
+  margin-top:10%;
+  margin-right: 120px;
+  margin-left: 20px;
+}
+/* 收藏小字 */
+.vi11{
+  /* position: absolute; */
+  position: absolute;
+  z-index: 1;
+ margin-top: -70rpx; 
+  width: 100%;
+  margin-left: 110rpx;
+  color: white;
+  font-size:40rpx ;
+  font-style:normal;
+}
+/* 左边的小字0 */
+.vi12{
+  /* position: absolute; */
+  position: absolute;
+  z-index: 1;
+ margin-top: -120rpx; 
+  width: 100rpx;
+  margin-left: 100rpx;
+  color: white;
+  font-size:40rpx;
+  font-style:normal;
+  display: flex; /*设置显示样式**/
+
+align-items: center; /**子view垂直居中*/
+
+vertical-align: center; /**垂直居中*/
+
+justify-content: center; /**内容居中*/
+
+flex-direction: row;
+}
+/* 订阅小字 */
+.vi13{
+  /* position: absolute; */
+  position: absolute;
+  z-index: 1;
+ margin-top: -70rpx; 
+  width: 100%;
+  margin-left: 73%;
+  color: white;
+  font-size:40rpx ;
+  font-style:normal;
+}
+/* 右边的小字0 */
+.vi14{
+  /* position: absolute; */
+  position: absolute;
+  z-index: 1;
+ margin-top: -120rpx; 
+  width: 100rpx;
+  margin-left: 540rpx;
+  color: white;
+  font-size:40rpx;
+  font-style:normal;
+  display: flex; /*设置显示样式**/
+
+  align-items: center; /**子view垂直居中*/
+  
+  vertical-align: center; /**垂直居中*/
+  
+  justify-content: center; /**内容居中*/
+  
+  flex-direction: row;
+}

@@ -1,0 +1,29 @@
+<!--pages/page2/page2.wxml-->
+
+<!--选择框-->
+<view class="product-list">
+ <!--条件选择-->
+ <view class="choice-bar">
+  <view bindtap="opens" data-item="1" class="chioce-item" hover-class="click-once-opaque">{{start}}
+   <image class="icon-chioce" src="{{!isstart?openimg: offimg}}"></image>
+  </view>
+  <view bindtap="opens" data-item="0" class="chioce-item" hover-class="click-once-opaque">{{start1}}
+   <image class="icon-chioce" src="{{!isstart?openimg: offimg}}"></image>
+  </view>
+  <view class="sorting-list{{!isstart?' chioce-list-hide':' chioce-list-show'}}" style="margin-left:{{ml}};">
+   <view  wx:for="{{slist}}" catchtap="onclicks1" data-index="{{index}}" class="sorting-item" hover-class="click-once" wx:key="userInfoListId" >{{item.name}}</view>
+  </view>
+ </view>
+ 
+</view>
+<view class="scr" wx:for="{{ll}}">
+ 
+   <image src="/img/sc.png" style="width:40rpx;height:40rpx;margin-left:530rpx;margin-top:10rpx;"></image>
+ </view>
+
+
+
+
+
+
+
