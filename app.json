@@ -1,11 +1,14 @@
 {
   "pages":[
-    "pages/list/list",
     "pages/index/index",
+    "pages/list/list",
     "pages/logs/logs",
     "pages/search/search",
     "pages/mine/mine",
-    "pages/out/out"
+    "pages/out/out",
+    "pages/collect/collect",
+    "pages/follow/follow",
+    "pages/setup/setup"
   ],
   "window":{
     "backgroundTextStyle":"light",
