@@ -1,19 +1,78 @@
-/**index.wxss**/
-.userinfo {
+/* pages/home/home.wxss */
+page{
+  font-size: small;
+}
+swiper{
+  width: 100%;
+  height: calc(100vw * 352 / 676);
+}
+image{
+  width: 100%;
+}
+.first_tab{
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  border-bottom: 1px solid #dedede;
+}
+.titlebox{
+  display: flex;
+}
+.article{
+  
+}
+button{
+  width: 750rpx;
+}
+.title{
+  flex:7;
+  margin-left: 10%;
+  font-size: 50rpx;
+  color: black;
+  justify-content: left;
+  text-align: left;
+}
+.brief{
+  font-size: 35rpx;
+  margin-left: 10%;
+  width: 80%;
+  height: 135rpx;
+  color: gray;
+  display: -webkit-box;
+  word-wrap: break-word;
+  word-break: break-all;
+  justify-content: left;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.collect{
+  flex:3;
+  margin-top: 1%;
+  width: 8%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  color: #aaa;
 }
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.collect image{
+  width: 26px;
+  height: 26px;
 }
-
-.usermotto {
-  margin-top: 200px;
+.tr_click {
+  width: 30%;
+  margin-left: 70%;
+  display: flex;
+  justify-content: right;
+  text-align: right;
+}
+.tr_platform {
+  width: 50%;
+  margin-left: 10%;
+  color: green;
+  display: flex;
+  justify-content: left;
+  text-align: center;
 }

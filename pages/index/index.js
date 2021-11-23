@@ -1,48 +1,109 @@
-// index.js
-// 获取应用实例
-const app = getApp()
-
+// pages/home/home.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+      // 轮播图数组
+      swiperList: [
+          {
+              id:0,
+              src:'https://static.oschina.net/uploads/space/2021/0618/082709_qiFl_4937141.png'
+          },
+          {
+              id:1,
+              src:'https://img-home.csdnimg.cn/images/20210926052450.jpg'
+          },
+          {
+              id:2,
+              src:'https://static.oschina.net/uploads/space/2021/0616/080930_6f9J_4937141.png'
+          }
+      ],
+      articleList:[
+           
+      ]
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+      // 发送异步请求获取轮播图数据
+      wx.request({
+      // url内存放服务器的地址
+        url: 'http://127.0.0.1:5000/hotlist',
+        data:{},
+        dataType:'json',
+      //   成功时的回调函数
+        success: (result) => {
+          this.setData({
+              // 获取文章信息
+              articleList:result.data.result
+          })
+        }
+      });
+  },
+  gotoURL: function (e) {
+      wx.setStorageSync('web1', this.data.articleList[e.currentTarget.dataset.index].blogUrl)
+      console.log(wx.getStorageSync('web1'))
+      wx.navigateTo({
+        url: '/pages/out/out'
     })
+    this.sendMsg()
   },
-  onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  onPageScroll: function () {
+
+  },
+  onTabItemTap:function(item){
+      
   }
 })

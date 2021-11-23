@@ -1,23 +1,39 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!-- 搜索框 开始 -->
+<view class="pyg_home">
+<searchinput></searchinput>
+</view>
+<!-- 搜索框 结束 -->
+<!--轮播图 开始-->
+<swiper autoplay interval="2500" indicator-dots indicator-color="#0094ff" indicator-active-color="#ff0094" circular>
+    <swiper-item
+    wx:for="{{swiperList}}"
+    wx:key="id"
+    >
+    <navigator url="/pages/item/item">
+    <image mode="widthFix" src="{{item.src}}" />
+    </navigator>
+    </swiper-item>
+</swiper>
+<!-- 轮播图 结束 -->
+<!-- 热门文章推送开始 -->
+<view 
+    wx:for="{{articleList}}"
+    wx:key="id"
+    data-index="{{index}}"
+    bindtap="gotoURL"
+class="first_tab">
+    <navigator class="article" url="/pages/article/article">
+<!-- 上方文章信息 -->
+<view class="titlebox">
+    <view class="title">{{item.blogTitle}}</view>
+    <view class="collect">
+    <image src="../../images/heart.png"></image>
+    <view class="collect_text">收藏</view>
+    </view>
+</view>
+<!-- 下方文章信息 -->
+<view class="brief">文章简介：{{item.blogBrief}}</view>
+<view class="tr_platform">osChina</view>
+<view class="tr_click">点击量：{{item.id}}</view>
+</navigator>
 </view>

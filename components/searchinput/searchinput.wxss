@@ -1,0 +1,14 @@
+.search_input{
+    height: 60rpx;
+    padding: 10rpx;
+    background-color: #0094aa;
+    font-size: 35rpx;
+}
+.search{
+    height: 100%;
+    border-radius: 55rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
