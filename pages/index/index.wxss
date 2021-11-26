@@ -1,38 +1,44 @@
 /* pages/home/home.wxss */
-page{
+page {
   font-size: small;
 }
-swiper{
+
+swiper {
   width: 100%;
   height: calc(100vw * 352 / 676);
 }
-image{
+
+image {
   width: 100%;
 }
-.first_tab{
+
+.first_tab {
   position: relative;
   width: 100vw;
   overflow: hidden;
   border-bottom: 1px solid #dedede;
 }
-.titlebox{
+
+.titlebox {
   display: flex;
 }
-.article{
-  
-}
-button{
+
+.article {}
+
+button {
   width: 750rpx;
 }
-.title{
-  flex:7;
+
+.title {
+  flex: 7;
   margin-left: 10%;
   font-size: 50rpx;
   color: black;
   justify-content: left;
   text-align: left;
 }
-.brief{
+
+.brief {
   font-size: 35rpx;
   margin-left: 10%;
   width: 80%;
@@ -48,8 +54,9 @@ button{
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
-.collect{
-  flex:3;
+
+.collect {
+  flex: 3;
   margin-top: 1%;
   width: 8%;
   display: flex;
@@ -57,10 +64,12 @@ button{
   justify-content: center;
   align-items: center;
 }
-.collect image{
+
+.collect image {
   width: 26px;
   height: 26px;
 }
+
 .tr_click {
   width: 30%;
   margin-left: 70%;
@@ -68,6 +77,7 @@ button{
   justify-content: right;
   text-align: right;
 }
+
 .tr_platform {
   width: 50%;
   margin-left: 10%;

@@ -13,7 +13,7 @@ Page({
         /**
          * 正式版：榜单文章相关数据
          */
-        list:[],
+        list: [],
         /**
          * 本地测试版：榜单文章相关数据
          */
@@ -50,7 +50,7 @@ Page({
         var that = this; //重置data{}里数据时候setData方法的this应为这里的this，如果在下方的success直接写this就变成wx.request的this了
         wx.request({
             url: 'http://127.0.0.1:5000/hotlist', //请求地址（测试）
-            data: {//传所点击的URL和用户信息
+            data: { //传所点击的URL和用户信息
                 url: wx.getStorageSync('web1'),
                 userinfo: wx.getStorageSync('userinfo')
             }, //发送给后台的数据
@@ -62,7 +62,7 @@ Page({
             success: function (res) {
                 console.log(res.data); //res.data为后台返回的数据
                 that.setData({ //用that而不是this，用this就是success的this就错了
-                    list:res.data.result
+                    list: res.data.result
                 })
             },
             fail: function (err) {}, //请求失败
@@ -75,30 +75,42 @@ Page({
     sendLike: function (e) {
         // console.log(e.currentTarget.dataset.index)
         var _url = this.data.list[e.currentTarget.dataset.index].blogUrl
-        var that = this;
-        wx.request({
-            url: 'http://127.0.0.1:5000/hotlist',
-            data: {//传递给后端的数据：所点击的URL和用户信息
-                url: _url,
-                userinfo: wx.getStorageSync('userinfo'),
-            },
-            header: {
-                'content-type': 'application/json'
-            },
-            method: 'GET',
-            dataType: 'json',
-            success: function (res) {
-                console.log(res.data); //res.data为后台返回的数据
-                that.setData({ //用that而不是this，用this就是success的this就错了
-                    list:res.data.result
-                })
-            },
-            fail: function (err) {}, //请求失败
-            complete: function () {} //请求完成后执行的函数
-        })
-        wx.showToast({
-          title: '收藏成功'
-        })
+        var _title = this.data.list[e.currentTarget.dataset.index].blogTitle
+        var _openid = wx.getStorageSync('openid')
+        console.log(_openid)
+        if (_openid == '') {
+            wx.showToast({
+                title: '请先登录'
+            })
+        } else {
+            var that = this;
+            wx.request({
+                url: 'http://127.0.0.1:5000/add_user_likes',
+                data: { //传递给后端的数据：所点击的URL和用户信息
+                    url: _url,
+                    userOpenid: _openid,
+                    title: _title
+                },
+                header: {
+                    'content-type': 'application/json'
+                },
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res.data); //res.data为后台返回的数据
+                    that.setData({ //用that而不是this，用this就是success的this就错了
+                        //list:res.data.result
+                    })
+                    wx.showToast({
+                        title: '收藏成功'
+                    })
+                },
+                fail: function (err) {}, //请求失败
+                complete: function () {} //请求完成后执行的函数
+            })
+
+        }
+
     },
     /**
      * 点击跳转文章对应外部页面、该文章点击量+1
@@ -183,7 +195,7 @@ Page({
      */
     getMsg: function () {
         var that = this; //重置data{}里数据时候setData方法的this应为这里的this，如果在下方的success直接写this就变成wx.request的this了
-        if(this.data.dailyFlag==1){
+        if (this.data.dailyFlag == 1) {
             wx.request({
                 url: 'http://127.0.0.1:5000/hotlist', //请求地址(测试)
                 data: {
@@ -195,9 +207,9 @@ Page({
                 method: 'GET',
                 dataType: 'json',
                 success: function (res) {
-                   //console.log(res.data); //res.data为后台返回的数据
+                    //console.log(res.data); //res.data为后台返回的数据
                     that.setData({ //用that而不是this，用this就是success的this就错了
-                        list:res.data.result
+                        list: res.data.result
                     })
                     console.log(that.data.list)
                     console.log(that.data.dataList)
@@ -205,16 +217,16 @@ Page({
                 fail: function (err) {}, //请求失败
                 complete: function () {} //请求完成后执行的函数
             })
-        }else if(this.data.specialFlag==1){
-            if(this.data.classify==1){
+        } else if (this.data.specialFlag == 1) {
+            if (this.data.classify == 1) {
                 wx.request({
-                    url: 'http://127.0.0.1:5000/zixun', //请求地址(测试)
+                    url: 'http://127.0.0.1:5000/news', //请求地址(测试)
                     data: {
                         //userinfo:wx.getStorageSync('userinfo'),//用户信息
-                        dailyFlag:this.data.dailyFlag,//为1：要日榜信息
-                        monthFlag:this.data.monthFlag,//为1：要月榜
-                        specialFlag:this.data.specialFlag,//为1：要专区
-                        classify:this.data.classify//表示专区内分类，1：osChina 2:CSDN 3:github
+                        dailyFlag: this.data.dailyFlag, //为1：要日榜信息
+                        monthFlag: this.data.monthFlag, //为1：要月榜
+                        specialFlag: this.data.specialFlag, //为1：要专区
+                        classify: this.data.classify //表示专区内分类，1：osChina 2:CSDN 3:github
                     }, //发送给后台的数据
                     header: {
                         'content-type': 'application/json'
@@ -222,9 +234,9 @@ Page({
                     method: 'GET',
                     dataType: 'json',
                     success: function (res) {
-                       //console.log(res.data); //res.data为后台返回的数据
+                        //console.log(res.data); //res.data为后台返回的数据
                         that.setData({ //用that而不是this，用this就是success的this就错了
-                            list:res.data.result
+                            list: res.data.result
                         })
                         console.log(that.data.list)
                         console.log(that.data.dataList)
@@ -233,15 +245,15 @@ Page({
                     complete: function () {} //请求完成后执行的函数
                 })
             }
-            if(this.data.classify==2){
+            if (this.data.classify == 2) {
                 wx.request({
                     url: 'http://127.0.0.1:5000/hotlist', //请求地址(测试)
                     data: {
                         //userinfo:wx.getStorageSync('userinfo'),//用户信息
-                        dailyFlag:this.data.dailyFlag,//为1：要日榜信息
-                        monthFlag:this.data.monthFlag,//为1：要月榜
-                        specialFlag:this.data.specialFlag,//为1：要专区
-                        classify:this.data.classify//表示专区内分类，1：osChina 2:CSDN 3:github
+                        dailyFlag: this.data.dailyFlag, //为1：要日榜信息
+                        monthFlag: this.data.monthFlag, //为1：要月榜
+                        specialFlag: this.data.specialFlag, //为1：要专区
+                        classify: this.data.classify //表示专区内分类，1：osChina 2:CSDN 3:github
                     }, //发送给后台的数据
                     header: {
                         'content-type': 'application/json'
@@ -249,9 +261,9 @@ Page({
                     method: 'GET',
                     dataType: 'json',
                     success: function (res) {
-                       //console.log(res.data); //res.data为后台返回的数据
+                        //console.log(res.data); //res.data为后台返回的数据
                         that.setData({ //用that而不是this，用this就是success的this就错了
-                            list:res.data.result
+                            list: res.data.result
                         })
                         console.log(that.data.list)
                         console.log(that.data.dataList)
@@ -260,15 +272,15 @@ Page({
                     complete: function () {} //请求完成后执行的函数
                 })
             }
-            if(this.data.classify==3){
+            if (this.data.classify == 3) {
                 wx.request({
-                    url: 'http://127.0.0.1:5000/zixun', //请求地址(测试)
+                    url: 'http://127.0.0.1:5000/news', //请求地址(测试)
                     data: {
                         //userinfo:wx.getStorageSync('userinfo'),//用户信息
-                        dailyFlag:this.data.dailyFlag,//为1：要日榜信息
-                        monthFlag:this.data.monthFlag,//为1：要月榜
-                        specialFlag:this.data.specialFlag,//为1：要专区
-                        classify:this.data.classify//表示专区内分类，1：osChina 2:CSDN 3:github
+                        dailyFlag: this.data.dailyFlag, //为1：要日榜信息
+                        monthFlag: this.data.monthFlag, //为1：要月榜
+                        specialFlag: this.data.specialFlag, //为1：要专区
+                        classify: this.data.classify //表示专区内分类，1：osChina 2:CSDN 3:github
                     }, //发送给后台的数据
                     header: {
                         'content-type': 'application/json'
@@ -276,9 +288,9 @@ Page({
                     method: 'GET',
                     dataType: 'json',
                     success: function (res) {
-                       //console.log(res.data); //res.data为后台返回的数据
+                        //console.log(res.data); //res.data为后台返回的数据
                         that.setData({ //用that而不是this，用this就是success的this就错了
-                            list:res.data.result
+                            list: res.data.result
                         })
                         console.log(that.data.list)
                         console.log(that.data.dataList)
@@ -287,9 +299,9 @@ Page({
                     complete: function () {} //请求完成后执行的函数
                 })
             }
-            
+
         }
-        
+
     },
     /**
      * 生命周期函数--监听页面加载

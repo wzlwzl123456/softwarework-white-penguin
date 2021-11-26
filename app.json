@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/list/list",
     "pages/logs/logs",
@@ -10,18 +10,18 @@
     "pages/follow/follow",
     "pages/setup/setup"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#a9b7b7",
     "selectedColor": "dodgerblue",
-    "borderStyle":"white",
+    "borderStyle": "white",
     "list": [{
       "selectedIconPath": "images/首页 (1).png",
       "iconPath": "images/首页.png",

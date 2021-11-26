@@ -4,20 +4,19 @@
 .product-list {
   width: 100%;
   box-sizing: border-box;
-  
- }
-  
-  
- .choice-bar {
+}
+
+.choice-bar {
   position: fixed;
   display: flex;
   width: 100%;
   font-size: 14px;
   background-color: #fff;
   /**z-index: 0;**/
- }
- .chioce-item {
-  background-color:rgb(129, 165, 195);
+}
+
+.chioce-item {
+  background-color: rgb(129, 165, 195);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,9 +28,10 @@
   border-bottom: 1rpx solid #ddd;
   border-left: 1rpx solid #ddd;
   /*border-right: 1rpx solid #ddd;*/
- }
- .chioce-item1 {
-  background-color:rgb(129, 165, 195);
+}
+
+.chioce-item1 {
+  background-color: rgb(129, 165, 195);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,19 +43,24 @@
   border-bottom: 1rpx solid #ddd;
   border-left: 1rpx solid #ddd;
   /*border-right: 1rpx solid #ddd;*/
- }
-  .scr{
-    width: 100%;
-    height: 300rpx;
-    border-bottom-style: solid;
-    border-bottom-color: black;
-    border-bottom-width: 1rpx;
-  }
- .icon-chioce {
+}
+
+.scr {
+  width: 100%;
+  height: 300rpx;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 1rpx;
+}
+
+.icon-chioce {
   height: 30rpx;
   width: 30rpx;
- }
- .district-list,.sorting-list,.filter-list {
+}
+
+.district-list,
+.sorting-list,
+.filter-list {
   margin-top: 2rpx;
   position: absolute;
   top: 80rpx;
@@ -65,20 +70,153 @@
   z-index: -1;
   font-size: 14px;
   border-bottom: 1rpx solid #ddd;
- }
- .chioce-list-hide {
+}
+
+.chioce-list-hide {
   display: none !important;
- }
- .chioce-list-show {
+}
+
+.chioce-list-show {
   /**top: 80rpx;**/
   /* animation: slide 500ms; */
   width: 50%;
- }
-  
- .sorting-item {
+}
+
+.sorting-item {
   height: 80rpx;
   /* line-height: 80rpx; */
   padding: 0 40rpx;
   /* border-bottom: 1rpx solid #ddd; */
- }
- 
+}
+
+
+
+.searchWrap {
+  background-color: dodgerblue;
+  position: absolute;
+  width: 790rpx;
+  height: 90rpx;
+}
+
+.butt {
+  top: 15rpx;
+  border-radius: 20rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom {
+  position: absolute;
+  top: 100rpx;
+  width: 90%;
+  margin: 0 5%;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+}
+
+.bottom1 {
+  position: absolute;
+  top: 200rpx;
+  width: 90%;
+  margin: 0 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.leftButton {
+  margin-left: 20%;
+  position: absolute;
+  color: black;
+  border: 1px solid black;
+}
+
+.rightButton {
+  margin-right: 20%;
+  position: absolute;
+  right: 0%;
+  color: black;
+  border: 1px solid black;
+}
+
+.listTableWrap {
+  position: absolute;
+  width: 790rpx;
+  height: 1500rpx;
+  left: 50%;
+  margin-left: -395rpx;
+  top: 70rpx;
+  overflow-y: scroll;
+  /*显示滚动条*/
+  overflow-x: hidden;
+  /*不显示滚动条*/
+}
+
+.table {
+  border: 1px solid #dadada;
+  border-right: 0;
+  border-bottom: 0;
+  /* height:20%; */
+  width: 98%;
+  margin-left: 1%;
+}
+
+.tr_titleBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.tr_title {
+  width: 70%;
+  margin-left: 10%;
+  font-size: 50rpx;
+  color: black;
+  justify-content: left;
+  text-align: left;
+}
+
+.tr_like {
+  margin-top: 1%;
+  width: 8%;
+}
+
+.tr_like image {
+  width: 100%;
+}
+
+.tr_synopsis {
+  font-size: 35rpx;
+  margin-left: 10%;
+  width: 80%;
+  height: 135rpx;
+  color: gray;
+  display: -webkit-box;
+  word-wrap: break-word;
+  word-break: break-all;
+  justify-content: left;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.tr_platform {
+  width: 50%;
+  margin-left: 10%;
+  color: green;
+  display: flex;
+  justify-content: left;
+  text-align: center;
+}
+
+.tr_click {
+  width: 30%;
+  margin-left: 70%;
+  display: flex;
+  justify-content: right;
+  text-align: right;
+}

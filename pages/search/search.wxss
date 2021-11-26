@@ -1,19 +1,22 @@
-.main{
+.main {
     padding: 0 20rpx;
-    background-color: #457bcd;   
-    width:750rpx;
-    height: 118rpx; 
+    background-color: #457bcd;
+    width: 750rpx;
+    height: 120rpx;
     position: relative;
     box-sizing: border-box;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
+
 /* 搜索盒子 */
 .search-box {
+
     position: relative;
     display: flex;
     justify-content: space-between;
     padding-top: 26rpx;
 }
+
 /* 输入框 */
 .search-input {
     position: relative;
@@ -21,11 +24,12 @@
     height: 60rpx;
     line-height: 60rpx;
     padding: 0rpx 20rpx 0rpx 20rpx;
-    background: #f8f8f8;
+    background-color: #fff;
     border-radius: 10rpx;
     font-size: 32rpx;
     border: 2rpx solid #ddd;
 }
+
 /* 搜索取消图标 */
 .search-icon {
     position: relative;
@@ -34,41 +38,47 @@
     width: 35rpx;
     height: 35rpx;
 }
+
 /* 取消 */
-.search-btn{
+.search-btn {
     width: 90rpx;
     position: relative;
     left: 20rpx;
     font-size: 30rpx;
     line-height: 64rpx;
 }
+
 /* 返回键 */
-.back_Icon{
+.back_Icon {
     float: left;
     height: 60rpx;
     width: 60rpx;
     position: relative;
-    top:26rpx
+    top: 26rpx
 }
+
 /* 标题框架 */
-.title{
+.title {
     font-size: 32rpx;
     margin: 50rpx 0 30rpx 0rpx;
 }
+
 /* 标题文本 */
-.title text{
+.title text {
     padding-right: 30rpx;
     padding-bottom: 10rpx;
     color: #a9c3e7;
-    border-bottom: 8rpx ;
+    border-bottom: 8rpx;
 }
+
 /* 清除键 */
-.title text.clear{
-    color:#bfbfbf ;
+.title text.clear {
+    color: #bfbfbf;
     padding-left: 450rpx;
 }
+
 /* 标签 */
-.tags text{
+.tags text {
     display: inline-block;
     font-size: 28rpx;
     padding: 6rpx 20rpx;
@@ -78,8 +88,9 @@
     border-radius: 40rpx;
     word-break: break-all;
 }
+
 /* 显示关键词框架 */
-.keywords{
+.keywords {
     position: absolute;
     width: 100%;
     left: 0;
@@ -89,47 +100,56 @@
     padding: 20rpx;
     box-sizing: border-box;
 }
+
 /* 关键词条框架 */
-.keywords-item{
+.keywords-item {
     line-height: 70rpx;
     border-bottom: 1px solid #eee;
     color: #787878;
     font-size: 28rpx;
 }
+
 /* 结果大体框架 */
-.result{
+.result {
     margin-top: 0rpx;
 }
+
 /* 结果大体框架 */
-.result-box, .recommend-box{
-    padding:0 20rpx;
+.result-box,
+.recommend-box {
+    padding: 0 20rpx;
 }
+
 /* 每项结果的框架 */
-.result-list{
+.result-list {
     display: inline-block;
     width: 325rpx;
     height: 325rpx;
-    margin:0 20rpx 20rpx 0;
+    margin: 0 20rpx 20rpx 0;
     border-radius: 10px;
     text-align: center;
     background: #f5f6f5;
 }
+
 /* 最后偶数结果框架 */
-.result-list:nth-child(2n){
+.result-list:nth-child(2n) {
     margin-right: 0;
 }
+
 /* 结果图片 */
-.result-list image{
+.result-list image {
     width: 175rpx;
     height: 175rpx;
     margin: 20rpx 0 10rpx;
 }
+
 /* 文字大小 */
-.result-list .result-text{
+.result-list .result-text {
     font-size: 32rpx;
 }
+
 /* 搜索为空时候框架 */
-.null-tips{
+.null-tips {
     width: 100%;
     padding: 200rpx 0;
     text-align: center;
@@ -137,15 +157,16 @@
 }
 
 /* 相关推荐 */
-.recommend-title{
+.recommend-title {
     position: relative;
     height: 0;
     width: 100%;
     border-bottom: 1px solid #f0f0f1;
     margin-bottom: 42rpx;
-  }
-  /* 相关推荐 */
-  .recommend-title text{
+}
+
+/* 相关推荐 */
+.recommend-title text {
     position: absolute;
     left: 50%;
     top: -20rpx;
@@ -159,24 +180,27 @@
     font-weight: bold;
     text-align: center;
     letter-spacing: 1px;
-  }
-  /* 热点搜索和历史搜索框架 */
-  .init-page{
+}
+
+/* 热点搜索和历史搜索框架 */
+.init-page {
     background-color: white;
-    border-radius:5px ;
-  }
- /* 文章框 */
- .item_show{
+    border-radius: 5px;
+}
+
+/* 文章框 */
+.item_show {
     position: relative;
     width: 100%;
     height: 320rpx;
-    border:none;
+    border: none;
     border-bottom: 2px solid #dcdcdc;
     margin-bottom: 20rpx;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
+
 /* 文章标题 */
-.item_title{
+.item_title {
     font-size: 30rpx;
     height: 40rpx;
     position: relative;
@@ -184,44 +208,50 @@
     top: 30rpx;
     left: 30rpx;
 }
+
 /* 内容简介 */
-.content{
+.content {
     position: relative;
     overflow: hidden;
-    top:60rpx;
+    top: 60rpx;
     width: 660rpx;
     height: 150rpx;
     left: 50rpx;
 }
+
 /* 来源 */
-.from{
-  position: relative;
-  top: 80rpx;
-  left: 50rpx;
-  float:left;
-  overflow: hidden;
+.from {
+    position: relative;
+    top: 80rpx;
+    left: 50rpx;
+    float: left;
+    overflow: hidden;
 }
+
 /* 文章点击量 */
-.point_Num{
-  position: absolute;
-  top: 270rpx;
-  left: 500rpx;
+.point_Num {
+    position: absolute;
+    top: 270rpx;
+    left: 500rpx;
 }
+
 /* 心形 */
-.like{
-  position: absolute;
-  float: left;
-  top: 250rpx;
-  left: 600rpx;
-  width: 50rpx;
-  height: 50rpx;
+.like {
+    position: absolute;
+    float: left;
+    top: 250rpx;
+    left: 600rpx;
+    width: 50rpx;
+    height: 50rpx;
 }
+
 /* 心形图片 */
-.like_Image{
+.like_Image {
     width: 100%;
     height: 100%;
 }
- /* 加载更多   */
+
+/* 加载更多   */
 .weui-loading {
     margin: 0 5px;
     width: 20px;
@@ -232,16 +262,83 @@
     animation: weuiLoading 1s steps(12, end) infinite;
     background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
     background-size: 100%;
-  }
-  .weui-loadmore {
+}
+
+.weui-loadmore {
     width: 65%;
     margin: 1.5em auto;
     line-height: 1.6em;
     font-size: 14px;
     text-align: center;
-  }
-  .weui-loadmore__tips {
+}
+
+.weui-loadmore__tips {
     display: inline-block;
     vertical-align: middle;
-  }
-  
+}
+
+.table {
+    border: 1px solid #dadada;
+    border-right: 0;
+    border-bottom: 0;
+    /* height:20%; */
+    width: 98%;
+    margin-left: 1%;
+}
+
+.tr_titleBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.tr_title {
+    width: 70%;
+    margin-left: 10%;
+    font-size: 50rpx;
+    color: black;
+    justify-content: left;
+    text-align: left;
+}
+
+.tr_like {
+    margin-top: 1%;
+    width: 8%;
+}
+
+.tr_like image {
+    width: 100%;
+}
+
+.tr_synopsis {
+    font-size: 35rpx;
+    margin-left: 10%;
+    width: 80%;
+    height: 135rpx;
+    color: gray;
+    display: -webkit-box;
+    word-wrap: break-word;
+    word-break: break-all;
+    justify-content: left;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.tr_platform {
+    width: 50%;
+    margin-left: 10%;
+    color: green;
+    display: flex;
+    justify-content: left;
+    text-align: center;
+}
+
+.tr_click {
+    width: 30%;
+    margin-left: 70%;
+    display: flex;
+    justify-content: right;
+    text-align: right;
+}

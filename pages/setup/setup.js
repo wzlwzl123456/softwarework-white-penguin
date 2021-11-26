@@ -64,7 +64,7 @@ Page({
 
   },
   // 跳转函数
-  jump(){
+  jump() {
     wx.switchTab({
       url: '/pages/mine/mine',
     })

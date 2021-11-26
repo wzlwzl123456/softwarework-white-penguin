@@ -1,39 +1,31 @@
 <!-- 搜索框 开始 -->
 <view class="pyg_home">
-<searchinput></searchinput>
+    <searchinput></searchinput>
 </view>
 <!-- 搜索框 结束 -->
 <!--轮播图 开始-->
 <swiper autoplay interval="2500" indicator-dots indicator-color="#0094ff" indicator-active-color="#ff0094" circular>
-    <swiper-item
-    wx:for="{{swiperList}}"
-    wx:key="id"
-    >
-    <navigator url="/pages/item/item">
-    <image mode="widthFix" src="{{item.src}}" />
-    </navigator>
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+        <navigator url="/pages/item/item">
+            <image mode="widthFix" src="{{item.src}}" />
+        </navigator>
     </swiper-item>
 </swiper>
 <!-- 轮播图 结束 -->
 <!-- 热门文章推送开始 -->
-<view 
-    wx:for="{{articleList}}"
-    wx:key="id"
-    data-index="{{index}}"
-    bindtap="gotoURL"
-class="first_tab">
+<view wx:for="{{articleList}}" data-index="{{index}}" bindtap="gotoURL" class="first_tab">
     <navigator class="article" url="/pages/article/article">
-<!-- 上方文章信息 -->
-<view class="titlebox">
-    <view class="title">{{item.blogTitle}}</view>
-    <view class="collect">
-    <image src="../../images/heart.png"></image>
-    <view class="collect_text">收藏</view>
-    </view>
-</view>
-<!-- 下方文章信息 -->
-<view class="brief">文章简介：{{item.blogBrief}}</view>
-<view class="tr_platform">osChina</view>
-<view class="tr_click">点击量：{{item.id}}</view>
-</navigator>
+        <!-- 上方文章信息 -->
+        <view class="titlebox">
+            <view class="title">{{item.blogTitle}}</view>
+            <view class="collect" catchtap="sendLike" data-index="{{index}}">
+                <image src="../../images/heart.png"></image>
+                <view class="collect_text">收藏</view>
+            </view>
+        </view>
+        <!-- 下方文章信息 -->
+        <view class="brief">文章简介：{{item.blogBrief}}</view>
+        <view class="tr_platform">osChina</view>
+        <view class="tr_click">点击量：{{item.id}}</view>
+    </navigator>
 </view>

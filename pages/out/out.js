@@ -5,16 +5,16 @@ Page({
      * 页面的初始数据
      */
     data: {
-        url:'abc'
+        url: 'abc'
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let _url=wx.getStorageSync('web1');
+        let _url = wx.getStorageSync('web1');
         this.setData({
-            url:_url
+            url: _url
         })
         //console.log(this.data.url);
     },

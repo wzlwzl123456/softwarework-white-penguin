@@ -1,33 +1,33 @@
 <!-- 头像与文本 -->
 <view class="vi1" style="transform: rotate({{deg}}deg);margin-left:{{l}}px;margin-top:{{t}}px;">
   <image src="{{head}}" mode="widthFix" class="compss"></image>
-  <text   style="margin-left:3rpx;color: #ffffff;font-size:30rpx;" bindtap="getUserProfile">{{name}}</text>
+  <text style="margin-left:3rpx;color: #ffffff;font-size:30rpx;" bindtap="getUserProfile">{{name}}</text>
 </view>
 <!-- 全局背景 -->
-<view >
-  <image src="/img/back.png" class="map" ></image>
+<view>
+  <image src="/img/back.png" class="map"></image>
 </view>
 
 <!-- 图标设置 -->
 <view class="vi2" bindtap="jump2">
-    <image src="/img/set.png" style="width:70rpx;height:70rpx;margin-left:9%;"></image>
+  <image src="/img/set.png" style="width:70rpx;height:70rpx;margin-left:9%;"></image>
 </view>
 
 <!-- 左边的字0 -->
 <view class="vi12">
-<view>0</view>
+  <view>{{list.length}}</view>
 </view>
 <!--右边的字0 -->
 <view class="vi14">
-<view>0</view>
+  <view>0</view>
 </view>
 <!-- 字收藏 -->
 <view class="vi11">
-<view>收藏</view>
+  <view>收藏</view>
 </view>
 <!-- 字订阅 -->
 <view class="vi13">
-<view>订阅</view>
+  <view>订阅</view>
 </view>
 <!-- 收藏夹 -->
 <view class="vi8" bindtap="jump1">
@@ -37,8 +37,3 @@
 <view class="vi88" bindtap="jump3">
   <image src="/img/dingyue.png" class="ceshi"></image>
 </view>
-
-
-
-
-

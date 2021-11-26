@@ -1,15 +1,16 @@
 <!-- 顶部搜索栏 -->
 <view class='searchWrap'>
-    <button class="butt" bindtap="gotoSearch" style="width:600rpx">
+    <view class="butt" bindtap="gotoSearch" style="width:600rpx">
         <!-- <image></image> -->
         <text>搜索</text>
-    </button>
+    </view>
 </view>
 
 <!-- 展示日榜、专区按钮 -->
 <view class="bottom">
     <button size="mini" class="leftButton" style="background-color: {{dailyColor}};" bindtap="showDailylist">日榜</button>
-    <button size="mini" class="rightButton" style="background-color: {{specialColor}};"bindtap="showSpecialArea">专区</button>
+    <button size="mini" class="rightButton" style="background-color: {{specialColor}};"
+        bindtap="showSpecialArea">专区</button>
 </view>
 
 <!-- 展示专区的按钮 -->
@@ -53,11 +54,11 @@
         <view class="tr_titleBox">
             <view class="tr_title">{{list[index].blogTitle}}</view>
             <buttom class="tr_like" catchtap="sendLike" data-index="{{index}}">
-                <image mode="widthFix" src="/images/heart.png" ></image>
+                <image mode="widthFix" src="/images/heart.png"></image>
             </buttom>
         </view>
         <view class="tr_synopsis">{{list[index].blogBrief}}</view>
-        <view class="tr_platform" >csdn</view>
+        <view class="tr_platform">csdn</view>
         <view class="tr_click">点击量：{{list[index].id}}</view>
     </view>
 </view>
@@ -68,7 +69,7 @@
         <view class="tr_titleBox">
             <view class="tr_title">{{list[index].blogTitle}}</view>
             <buttom class="tr_like" catchtap="sendLike" data-index="{{index}}">
-                <image mode="widthFix" src="/images/heart.png" ></image>
+                <image mode="widthFix" src="/images/heart.png"></image>
             </buttom>
         </view>
         <view class="tr_synopsis">{{list[index].blogBrief}}</view>

@@ -1,18 +1,20 @@
 /* pages/list/list.wxss */
 .searchWrap {
+    height: 60rpx;
+    padding: 10rpx;
     background-color: dodgerblue;
-    position: absolute;
-    width: 790rpx;
-    height: 90rpx;
+    font-size: 35rpx;
 }
 
 .butt {
-    top: 15rpx;
-    border-radius: 20rpx;
-    height: 60rpx;
+    margin-left: 10%;
+    width: 80%;
+    height: 100%;
+    border-radius: 55rpx;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: #fff;
 }
 
 .bottom {
