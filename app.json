@@ -8,7 +8,8 @@
     "pages/out/out",
     "pages/collect/collect",
     "pages/follow/follow",
-    "pages/setup/setup"
+    "pages/setup/setup",
+    "pages/demo4/demo4"
   ],
   "window": {
     "backgroundTextStyle": "light",

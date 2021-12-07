@@ -15,7 +15,7 @@
 
 <!-- 左边的字0 -->
 <view class="vi12">
-  <view>{{list.length}}</view>
+  <view>{{length}}</view>
 </view>
 <!--右边的字0 -->
 <view class="vi14">

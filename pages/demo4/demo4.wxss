@@ -1,0 +1,67 @@
+.main{
+    padding: 0 20rpx;
+    background-color: #0094aa;   
+    width:750rpx;
+    height: 118rpx; 
+    position: relative;
+    box-sizing: border-box;
+    overflow-x:hidden;
+}
+/* 搜索盒子 */
+.search-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 26rpx;
+}
+.title{
+    font-size: 50rpx;
+    margin-top: 20rpx;
+    margin-left: 30rpx;
+    color:#0366d6;
+}
+.star{
+    margin-left: 30rpx;
+    margin-top: 10rpx;
+    margin-bottom: 5rpx;
+}
+.point_Num
+{
+    margin-left: 30rpx;
+    padding-bottom: 20rpx;
+    margin-right: 30rpx;
+    border-bottom: solid 1rpx gray;
+}
+.focks
+{
+    margin-left: 30rpx;
+    margin-bottom: 5rpx;
+}
+.keyWord{
+    margin-left: 30rpx;
+    color: gray;
+}
+.contentTitle{
+    margin-top: 10rpx;
+    margin-left: 30rpx;
+    font-size: 33rpx;
+    font-weight:550
+}
+.content{
+    margin-top: 20rpx;
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    color: rgb(39, 48, 23);
+}
+.copy{
+    margin-top: 20rpx;
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    background-color: #f6f8fa;
+    padding: 20rpx;
+    border-radius: 15rpx;
+}
+.collect{
+    position: absolute;
+    right: 20rpx;
+}

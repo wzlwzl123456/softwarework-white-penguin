@@ -1,137 +1,108 @@
 <view class="main">
-    <!-- 返回键 -->
-    <navigator url="../index/index">
-        <view class="back_Icon">
-            <!-- <image src="../../image/back.png" style="width: 100%; height: 100%;"></image> -->
-        </view>
-    </navigator>
-    <!-- 搜索容器 -->
+<!-- 返回键 -->
+    
+<!-- 搜索容器 -->
     <view class="search-box">
-        <!-- 白布框 -->
-        <input class="search-input" placeholder="请输入搜索" value="{{value}}" bindinput="searchInput"
-            bindconfirm="searchconfirm" />
+    <!-- 白布框 -->
+        <input style="position: relative; left: 0rpx; top: 4rpx"  class="search-input" placeholder="请输入搜索" value="{{value}}" bindinput="searchInput"  bindconfirm="searchconfirm"/>
         <icon class="weui-icon-search_in-box search-icon" type="search" wx:if="{{isSearch}}" size="30"></icon>
         <!-- 点击相关词，后结果，出现取消键-->
         <text class="search-btn" wx:if="{{showResult}}" bindtap="cancelSearch">取消</text>
     </view>
+ 
 </view>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 若showResult为false时候显示热点搜索和历史搜索，反之显示结果-->
-<view class="result" wx:if="{{showResult}}">
-    <view wx:if="{{match}}">
-        <!-- <view class="table" wx:for="{{result}}" wx:key="index">
+    <!-- 若showResult为false时候显示热点搜索和历史搜索，反之显示结果-->
+    <view class="result" wx:if="{{showResult}}" >
+  <view class='top'>
+  <view class='top-text'>搜索平台</view>
+  <!-- 下拉框 -->
+  <view class='top-selected' bindtap='bindShowMsg'>
+   <text>{{grade_name}}</text>
+   <view class='select-icon'><image src='../../image/caret-down.png'></image></view>
+  </view>
+  <!-- 下拉需要显示的列表 -->
+  <view class="select_box" wx:if="{{select}}">
+   <view wx:for="{{grades}}" wx:key="unique">
+    <view class="select_one" bindtap="mySelect" data-index="{{index}}" data-name="{{item}}" style="width: 372rpx; height: 53rpx; display: block; box-sizing: border-box; left: -19rpx; top: 0rpx; position: relative">{{item}}</view>
+   </view>
+  </view>
+ </view>
+    <view wx:if="{{match1}}" >     
+        <view class="item_show" wx:for="{{result}}" wx:key="index">
+            <view class="collect" wx:if="{{item.like}}"bindtap="tapLike" data-index="{{index}}"><image src="../../image/heart.png" style="width: 100%;height: 100%;"></image></view>
+            <view class="collect" wx:if="{{item.islike}}"bindtap="cancelLike" data-index="{{index}}"><image src="../../image/heart _1.png" style="width: 100%;height: 100%;"></image></view>
+            <view bindtap="gotoURL" data-index="{{index}}">
+            <view class=".item_title">{{item.name}}/{{item.owner.login}}</view>
+            <view class="star"><image src="../../image/Star.png" style="width:33rpx; height:33rpx;"></image> Star:{{item.stargazers_count}}</view>
+            <view class="focks"><image src="../../image/brench.png" style="width:33rpx; height:33rpx;"></image> Focks:{{item.forks_count}}</view>
+            <view class="content">项目简介：{{item.description}}</view>
+            <view class="point_Num"><image src="../../image/num.png" style="width:33rpx; height:33rpx;"></image>PointNum:{{item.watchers_count}}</view>
+            <view class="deskTop" >Github</view>
+            </view>
+        </view>
+    </view> 
+    <view wx:if="{{match2}}" >     
+        <view class="item_show" wx:for="{{gitee}}" wx:key="index">
+            <view class="collect" wx:if="{{item.like}}"bindtap="tapLike1" data-index="{{index}}"><image src="../../image/heart.png" style="width: 100%;height: 100%;"></image></view>
+            <view class="collect" wx:if="{{item.islike}}"bindtap="cancelLike1" data-index="{{index}}"><image src="../../image/heart _1.png" style="width: 100%;height: 100%;"></image></view>
+            <view bindtap="gotoURL1" data-index="{{index}}">
+            <view class=".item_title">{{item.name}}/{{item.owner.login}}</view>
+            <view class="star"><image src="../../image/Star.png" style="width:33rpx; height:33rpx;"></image> Star:{{item.stargazers_count}}</view>
+            <view class="focks"><image src="../../image/brench.png" style="width:33rpx; height:33rpx;"></image> Focks:{{item.forks_count}}</view>
+            <view class="content">项目简介：{{item.description}}</view>
+            <view class="point_Num"><image src="../../image/num.png" style="width:33rpx; height:33rpx;"></image>PointNum:{{item.watchers_count}}</view>
+            <view class="deskTop" >Gitee</view>
+            </view>
+        </view>
+    </view>  
+        <!-- 查不到时 -->
+        <view class="result-null" wx:if="{{!num}}">
+            <view class="null-tips">Oh~~ 搜索结果为空！</view>
+            <view class="recommend-title">
+                <text>相关推荐(尚未实现)</text>
+            </view>
+            <view class="item_show" wx:for="{{result}}" wx:key="index">
             <view bindtap="gotoURL" data-index="{{index}}">
             <view class=".item_title">{{item.name}}</view>
             <view class="content">  {{item.description}}</view>
             <view class="from">来源：{{item.owner.login}}</view>
-            <view class="point_Num">点击量：{{item.watchers_count}}</view>
+            <view class="point_Num">点击量：{{item.stargazers_count}}</view>
             </view>
             <view class="like">
             <image class="like_Image" src="../../image/like.png" bindtap="tapLike" wx:if="{{item.like}}" data-index="{{index}}"></image>
             <image class="like_Image" src="../../image/like_1.png" bindtap="cancelLike" wx:if="{{item.islike}}" data-index="{{index}}"></image>
             </view>
-        </view> -->
-        <view class="table" wx:for="{{result}}" data-index="{{index}}" bindtap="gotoURL">
-            <view class="tr_titleBox">
-                <view class="tr_title">{{item.name}}</view>
-                <buttom class="tr_like" catchtap="tapLike" data-index="{{index}}">
-                    <image mode="widthFix" src="/images/heart.png"></image>
-                </buttom>
-            </view>
-            <view class="tr_synopsis">{{item.description}}</view>
-            <view class="tr_platform">{{item.owner.login}}</view>
-            <view class="tr_click">点击量：{{item.watchers_count}}</view>
+        </view>
         </view>
     </view>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- 查不到时 -->
-    <view class="result-null" wx:if="{{!num}}">
-        <view class="null-tips">Oh~~ 搜索结果为空！</view>
-        <view class="recommend-title">
-            <text>相关推荐(尚未实现)</text>
-        </view>
-        <view class="item_show" wx:for="{{result}}" wx:key="index">
-            <view bindtap="gotoURL" data-index="{{index}}">
-                <view class=".item_title">{{item.name}}</view>
-                <view class="content"> {{item.description}}</view>
-                <view class="from">来源：{{item.owner.login}}</view>
-                <view class="point_Num">点击量：{{item.stargazers_count}}</view>
-            </view>
-            <view class="like">
-                <image class="like_Image" src="../../image/like.png" bindtap="tapLike" wx:if="{{item.like}}"
-                    data-index="{{index}}"></image>
-                <image class="like_Image" src="../../image/like_1.png" bindtap="cancelLike" wx:if="{{item.islike}}"
-                    data-index="{{index}}"></image>
-            </view>
-        </view>
-    </view>
-</view>
-<!-- 热门搜索和历史搜索 -->
-<view class="init-page" wx:else>
-    <!-- 热点搜索 -->
-    <view class="title">
-        <text>热点搜索</text>
-    </view>
-    <view class="tags">
-        <text wx:for="{{hot}}" wx:key="index" data-text="{{item}}" bindtap="keywordHandle">{{item}}</text>
-    </view>
-    <!-- 历史搜索 -->
-    <view wx:if="{{history.length >=0}}">
+    <!-- 热门搜索和历史搜索 -->
+    <view class="init-page" wx:else>
+        <!-- 热点搜索 -->
         <view class="title">
-            <text>历史搜索</text>
-            <!-- 清除键 -->
-            <text class="clear" bindtap="clearHistory">清除</text>
+            <text>热点搜索</text>
         </view>
         <view class="tags">
-            <text wx:for="{{history}}" wx:key="index" data-text="{{item}}" bindtap="keywordHandle">{{item}}</text>
+            <text wx:for="{{hot}}" wx:key="index" data-text="{{item}}" bindtap="keywordHandle">{{item}}</text>
+        </view>
+        <!-- 历史搜索 -->
+        <view wx:if="{{history.length >=0}}">
+            <view class="title">
+                <text>历史搜索</text>
+                <!-- 清除键 -->
+                <text class="clear"  bindtap="clearHistory">清除</text>
+            </view>
+            <view class="tags">
+                <text wx:for="{{history}}" wx:key="index" data-text="{{item}}" bindtap="keywordHandle">{{item}}</text>
+            </view>
         </view>
     </view>
-</view>
 <!-- 显示关键词语 -->
-<!-- <view class="keywords" wx:if="{{false}}">
+    <!-- <view class="keywords" wx:if="{{false}}">
         <view class="keywords-item" wx:for="{{keywords}}" wx:key="index" data-text="{{item}}" bindtap="keywordHandle">{{item}}</view>
     </view> -->
-<!-- 下拉加载 -->
-<view class="weui-loadmore" hidden="{{isHideLoadMore}}" wx:if="{{showResult}}">
+    <!-- 下拉加载 -->
+    <view class="weui-loadmore" hidden="{{isHideLoadMore}}" wx:if="{{showResult}}">
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">正在加载</view>
-</view>
+  </view>
+

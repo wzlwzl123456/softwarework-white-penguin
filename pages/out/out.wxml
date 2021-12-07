@@ -1,2 +1,31 @@
-<!--pages/out/out.wxml-->
-<web-view src="{{url}}"></web-view>
+<!-- <import src="../../wxParse/wxParse.wxml"/>
+<view class="container"> -->
+  <!-- 这一块是富文本 显示的内容区 -->
+<!-- <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+</view> -->
+
+<!-- <web-view src="{{url}}"></web-view>  -->
+
+<view class="t_title">
+{{title}}
+</view>
+<view class="whiteBox"></view>
+<view class="t_date">{{date}}</view>
+<view class="whiteBox"></view>
+<view style="margin-left: 10%;">原文网址：</view>
+<view class="t_url" selectable="true">{{url}}</view>
+
+
+<view class="t_text">
+<text  selectable="true" maxlength="-1" style="overflow-y: visible; height: auto; display: flex;">{{text}}</text>
+</view>
+
+
+<!-- <view wx:for="{{article}}" data-index="{{index}}">
+    <view wx:if="{{article[index].type==1}}">
+        <text>{{article[index].content}}</text>
+    </view>
+    <view wx:if="{{article[index].type==2}}">
+        <image src="{{article[index].content}}"></image>
+    </view>
+</view> -->

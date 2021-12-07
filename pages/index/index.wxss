@@ -1,81 +1,46 @@
 /* pages/home/home.wxss */
-page {
+page{
   font-size: small;
 }
-
-swiper {
+swiper{
   width: 100%;
   height: calc(100vw * 352 / 676);
 }
-
-image {
+.first_tab{
+  border: 1px solid #dadada;
+  border-right: 0;
+  border-bottom: 0;
+  /* height:20%; */
+  width: 98%;
+  margin-left: 1%;
+}
+.titlebox{
+  display: flex;
+  flex-direction: row;
+}
+.item{
   width: 100%;
 }
-
-.first_tab {
-  position: relative;
-  width: 100vw;
-  overflow: hidden;
-  border-bottom: 1px solid #dedede;
-}
-
-.titlebox {
-  display: flex;
-}
-
-.article {}
-
-button {
-  width: 750rpx;
-}
-
-.title {
-  flex: 7;
+.title{
+  width: 70%;
   margin-left: 10%;
-  font-size: 50rpx;
+  font-size: 35rpx;
   color: black;
   justify-content: left;
   text-align: left;
 }
-
-.brief {
-  font-size: 35rpx;
-  margin-left: 10%;
-  width: 80%;
-  height: 135rpx;
-  color: gray;
-  display: -webkit-box;
-  word-wrap: break-word;
-  word-break: break-all;
-  justify-content: left;
-  text-align: left;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.collect {
-  flex: 3;
+.collect{
+  flex:3;
+  margin-left: 4%;
   margin-top: 1%;
-  width: 8%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-
-.collect image {
-  width: 26px;
+.collect image{
+  width: 26.41px;
   height: 26px;
 }
-
-.tr_click {
-  width: 30%;
-  margin-left: 70%;
+.tr_platformBox{
   display: flex;
-  justify-content: right;
-  text-align: right;
+  flex-direction: row;
 }
 
 .tr_platform {
@@ -85,4 +50,11 @@ button {
   display: flex;
   justify-content: left;
   text-align: center;
+}
+
+.tr_click {
+  width: 30%;
+  display: flex;
+  justify-content: right;
+  text-align: right;
 }

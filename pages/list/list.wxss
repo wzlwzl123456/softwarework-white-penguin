@@ -82,13 +82,14 @@
 .tr_title {
     width: 70%;
     margin-left: 10%;
-    font-size: 50rpx;
+    font-size: 35rpx;
     color: black;
     justify-content: left;
     text-align: left;
 }
 
 .tr_like {
+    margin-left: 4%;
     margin-top: 1%;
     width: 8%;
 }
@@ -113,6 +114,10 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
 }
+.tr_platformBox{
+    display: flex;
+    flex-direction: row;
+}
 
 .tr_platform {
     width: 50%;
@@ -125,8 +130,10 @@
 
 .tr_click {
     width: 30%;
-    margin-left: 70%;
     display: flex;
     justify-content: right;
     text-align: right;
+}
+.tr_writeBox{
+    height: 7rpx;
 }

@@ -8,16 +8,16 @@
 
 <!-- 展示日榜、专区按钮 -->
 <view class="bottom">
-    <button size="mini" class="leftButton" style="background-color: {{dailyColor}};" bindtap="showDailylist">日榜</button>
+    <button size="mini" class="leftButton" style="background-color: {{dailyColor}};" bindtap="showDailylist">刊物</button>
     <button size="mini" class="rightButton" style="background-color: {{specialColor}};"
-        bindtap="showSpecialArea">专区</button>
+        bindtap="showSpecialArea">榜单</button>
 </view>
 
 <!-- 展示专区的按钮 -->
 <view class="bottom1" wx:if="{{specialFlag==1}}">
     <button size="mini" bindtap="classification1">osChina</button>
     <button size="mini" bindtap="classification2">CSDN</button>
-    <button size="mini" bindtap="classification3">gitHub</button>
+    <!-- <button size="mini" bindtap="classification3">gitHub</button> -->
 </view>
 
 <!--  本地测试版：展示日榜或月榜文章 -->
@@ -51,31 +51,56 @@
 <!--  正式版：展示日榜文章 -->
 <view class='listTableWrap' wx:if="{{dailyFlag==1}}">
     <view class="table" wx:for="{{list}}" data-index="{{index}}" bindtap="gotoURL">
+        <view class="tr_writeBox"></view>
         <view class="tr_titleBox">
             <view class="tr_title">{{list[index].blogTitle}}</view>
             <buttom class="tr_like" catchtap="sendLike" data-index="{{index}}">
-                <image mode="widthFix" src="/images/heart.png"></image>
+                <image mode="widthFix" wx:if="{{dailyLike[index]}}" src="/images/heart (1).png"></image>
+                <image mode="widthFix" wx:else src="/images/heart.png"></image>
             </buttom>
         </view>
-        <view class="tr_synopsis">{{list[index].blogBrief}}</view>
-        <view class="tr_platform">csdn</view>
-        <view class="tr_click">点击量：{{list[index].id}}</view>
+        <!-- <view class="tr_synopsis">{{list[index].blogBrief}}</view> -->
+        <view class="tr_platformBox">
+            <view class="tr_platform">hellogithub</view>
+            <view class="tr_click">点击量：{{list[index].id}}</view>
+        </view>
+        <view class="tr_writeBox"></view>
     </view>
 </view>
 
 <!-- 正式版：展示专区的文章 -->
 <view class='listTableWrap' style="top: 280rpx;" wx:if="{{specialFlag==1}}">
     <view class="table" wx:for="{{list}}" data-index="{{index}}" bindtap="gotoURL">
+        <view class="tr_writeBox"></view>
         <view class="tr_titleBox">
             <view class="tr_title">{{list[index].blogTitle}}</view>
             <buttom class="tr_like" catchtap="sendLike" data-index="{{index}}">
-                <image mode="widthFix" src="/images/heart.png"></image>
+                <view wx:if="{{classify==1}}">
+                    <image mode="widthFix" wx:if="{{platform1Like[index]}}" src="/images/heart (1).png"></image>
+                    <image mode="widthFix" wx:else src="/images/heart.png"></image>
+                </view>
+                <view wx:elif="{{classify==2}}">
+                    <image mode="widthFix" wx:if="{{platform2Like[index]}}" src="/images/heart (1).png"></image>
+                    <image mode="widthFix" wx:else src="/images/heart.png"></image>
+                </view>
+                <view wx:elif="{{classify==3}}">
+                    <image mode="widthFix" wx:if="{{platform3Like[index]}}" src="/images/heart (1).png"></image>
+                    <image mode="widthFix" wx:else src="/images/heart.png"></image>
+                </view>
+
+
+
+
             </buttom>
         </view>
-        <view class="tr_synopsis">{{list[index].blogBrief}}</view>
-        <view class="tr_platform" wx:if="{{classify==1}}">osChina</view>
-        <view class="tr_platform" wx:if="{{classify==2}}">CSDN</view>
-        <view class="tr_platform" wx:if="{{classify==3}}">gitHub</view>
-        <view class="tr_click">点击量：{{list[index].id}}</view>
+        <!-- <view class="tr_synopsis">{{list[index].blogBrief}}</view> -->
+        <view class="tr_platformBox">
+            <view class="tr_platform" wx:if="{{classify==1}}">osChina</view>
+            <view class="tr_platform" wx:if="{{classify==2}}">CSDN</view>
+            <view class="tr_platform" wx:if="{{classify==3}}">gitHub</view>
+            <view class="tr_click">点击量：{{list[index].id}}</view>
+        </view>
+
+        <view class="tr_writeBox"></view>
     </view>
 </view>

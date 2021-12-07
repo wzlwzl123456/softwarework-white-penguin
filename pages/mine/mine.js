@@ -14,7 +14,8 @@ Page({
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     openid: 'x',
-    list: []
+    list: [],
+    length:0
   },
   // 事件处理函数
   bindViewTap() {
@@ -58,7 +59,7 @@ Page({
   },
 
 
-  onLoad() {
+  onLoad:function(options) {
     var that = this;
     if (wx.getUserProfile) {
       this.setData({
@@ -66,7 +67,7 @@ Page({
       })
     }
     this.userLogin()
-
+    this.getNum()
   },
   /**
    * 发送openid给后端
@@ -75,7 +76,7 @@ Page({
     console.log(this.data.openid)
     var that = this;
     wx.request({
-      url: 'http://127.0.0.1:5000/login',
+      url: 'https://whitepenguin.xyz/login',
       data: {
         userOpenid: this.data.openid
       }, //发送给后台的数据
@@ -97,7 +98,7 @@ Page({
   getNum: function () {
     var that = this;
     wx.request({
-      url: 'http://127.0.0.1:5000/get_user_likes', //请求地址(测试)
+      url: 'https://whitepenguin.xyz/get_user_likes', //请求地址(测试)
       data: {
         userOpenid: wx.getStorageSync('openid')
       }, //发送给后台的数据
@@ -109,9 +110,9 @@ Page({
       success: function (res) {
         console.log(res)
         that.setData({ //用that而不是this，用this就是success的this就错了
-          list: res.data.result
+          length: res.data.result.length
         })
-        console.log(that.data.list)
+        console.log(that.data.length)
       },
       fail: function (err) {}, //请求失败
       complete: function () {} //请求完成后执行的函数

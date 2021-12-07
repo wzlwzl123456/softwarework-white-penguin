@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     start: "分类",
     start1: "语言",
     slist: [{
@@ -25,28 +26,49 @@ Page({
         name: "Python"
       },
     ],
-    slist2: [{
-        id: 1,
-        name: "开源项目"
-      },
-      {
-        id: 1,
-        name: "月刊"
-      },
-    ],
     isstart: false,
     openimg: "/img/downs.png",
     offimg: "/img/down.png",
-    list: []
+    list: [],
+    detail: ''
+
+
   },
 
   /**
    * 点击跳转文章对应外部页面
    */
   gotoURL: function (e) {
+    var that = this;
     wx.setStorageSync('web1', this.data.list[e.currentTarget.dataset.index].user_likes_url)
-    wx.navigateTo({
-      url: '/pages/out/out'
+    console.log(wx.getStorageSync('web1'))
+    console.log(this.data.list[e.currentTarget.dataset.index].user_likes_url)
+    var _url = this.data.list[e.currentTarget.dataset.index].user_likes_url
+    wx.request({
+      url: 'http://whitepenguin.xyz/user_likes_details', //请求地址(测试)
+      data: {
+        url: _url
+      }, //发送给后台的数据
+      header: {
+        'content-type': 'application/json'
+      }, //请求头
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+
+        that.setData({ //用that而不是this，用this就是success的this就错了
+          detail: res.data.result
+        })
+        console.log(that.data.detail) //打印后端返回的数据
+        wx.setStorageSync('detail', that.data.detail)
+        var _text =
+          wx.navigateTo({
+            url: '/pages/out/out?textData=' + that.data.detail + '&titleData=' + that.data.list[e.currentTarget.dataset.index].user_likes_title + '&urlData=' + that.data.list[e.currentTarget.dataset.index].user_likes_url
+          })
+
+      },
+      fail: function (err) {}, //请求失败
+      complete: function () {} //请求完成后执行的函数
     })
 
   },
@@ -100,6 +122,7 @@ Page({
       isstart: false,
       isfinish: false,
       isdates: false,
+      start: this.data.slist[index].name,
       finish: "目的地"
     })
   },
@@ -111,7 +134,7 @@ Page({
     console.log(wx.getStorageSync('openid'))
     var that = this;
     wx.request({
-      url: 'http://127.0.0.1:5000/get_user_likes', //请求地址(测试)
+      url: 'https://whitepenguin.xyz/get_user_likes', //请求地址(测试)
       data: {
         userOpenid: wx.getStorageSync('openid')
       }, //发送给后台的数据
@@ -123,7 +146,7 @@ Page({
       success: function (res) {
         console.log(res)
         that.setData({ //用that而不是this，用this就是success的this就错了
-          list: res.data.result
+          list: res.data.result,
         })
         console.log(that.data.list)
       },
@@ -132,6 +155,34 @@ Page({
     })
   },
   sendNotLike: function (e) {
+    var that = this;
+    var _openid=wx.getStorageSync('openid')
+    var _url=this.data.list[e.currentTarget.dataset.index].user_likes_url
+    var _title=this.data.list[e.currentTarget.dataset.index].user_likes_title
+                wx.request({
+                    url: 'https://whitepenguin.xyz/del_user_likes',
+                    data: { //传递给后端的数据：所点击的URL和用户信息
+                        url: _url,
+                        userOpenid: _openid,
+                        title: _title
+                    },
+                    header: {
+                        'content-type': 'application/json'
+                    },
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res.data); //res.data为后台返回的数据
+                        that.setData({
+
+                        })
+                        wx.showToast({
+                            title: '取消收藏成功'
+                        })
+                    },
+                    fail: function (err) {}, //请求失败
+                    complete: function () {} //请求完成后执行的函数
+                })
     wx.showToast({
       title: '取消收藏'
     })

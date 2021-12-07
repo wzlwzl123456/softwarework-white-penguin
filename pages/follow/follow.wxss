@@ -1,70 +1,82 @@
-/* pages/page3/page3.wxss */
-page {
-  width: 100%;
-  height: 100%;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.nav {
-  width: 100%;
-  height: 100rpx;
-  background-color: white;
+/* pages/list/list.wxss */
+.bottom {
+  position: absolute;
+  width: 90%;
+  margin: 0 5%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  border-bottom-style: solid;
-  border-bottom-color: black;
-  border-bottom-width: 1rpx;
+  top:8rpx;
+  /* align-items: center; */
 }
 
-.item {
-  font-size: 32rpx;
-  color: black;
-  height: 50rpx;
-  width: 100rpx;
-  line-height: 50rpx;
-  align-self: center;
-  text-align: center;
-}
-
-.active {
-  background-color: rgb(31, 96, 195);
-  border-radius: 10rpx;
-  width: 30%;
-  height: 55%;
-}
-
-.list {
-  width: 100%;
-  height: 100%;
+.bottom1 {
+  position: absolute;
+  top: 200rpx;
+  width: 90%;
+  margin: 0 5%;
   display: flex;
-  background-color: white;
+  flex-direction: row;
+  align-items: center;
 }
 
-.detail {
-  margin: auto;
-  margin-top: 30rpx;
+.leftButton {
+  margin-left: 15%;
+  position: absolute;
+  color: black;
+  border: 1px solid black;
 }
 
-.lb {
-  width: 100%;
-  height: 90rpx;
+.rightButton {
+  margin-right: 15%;
+  position: absolute;
+  right: 0%;
+  color: black;
+  border: 1px solid black;
 }
 
-.lb1 {
-  width: 45%;
-  height: 90rpx;
-  margin-top: 0rpx;
+.listTableWrap {
+  position: absolute;
+  width: 790rpx;
+  height: 1500rpx;
+  left: 50%;
+  margin-left: -395rpx;
+  top: 100rpx;
+  overflow-y: scroll;
+  /*显示滚动条*/
+  overflow-x: hidden;
+  /*不显示滚动条*/
 }
 
-.lb2 {
-  width: 45%;
-  height: 90rpx;
-  margin-top: -90rpx;
-  margin-left: 55%;
+.table {
+  border: 1px solid #dadada;
+  border-right: 0;
+  /*border-bottom: 0;/
+  /* height:20%; */
+  width: 98%;
+  margin-left: 1%;
+  display: flex;
+  flex-direction: row;
+  height: 6%;
+  position: relative;
 }
+
+.tr_platform {
+width: 30%;
+margin-left: 8%;
+position: absolute;
+bottom: 0;
+display: flex;
+justify-content: left;
+text-align: left;
+}
+
+.tr_click {
+  width: 40%;
+  right:0%;
+  display: flex;
+  justify-content: right;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+}
+

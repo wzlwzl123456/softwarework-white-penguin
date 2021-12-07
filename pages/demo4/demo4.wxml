@@ -1,0 +1,18 @@
+<view class="main">
+    <view class="search-box">
+    </view>
+</view>
+<view class="back">
+<view class="title">{{name}}/{{login}}</view>
+<view class="keyWord">SearchKeyWord:{{value}}</view>
+<view class="star"><image src="../../image/Star.png" style="width:33rpx; height:33rpx;"></image> Star:{{stargazers_count}}</view>
+<view class="focks"><image src="../../image/brench.png" style="width:33rpx; height:33rpx;"></image> Focks:{{forks_count}}</view>
+<view class="point_Num"><image src="../../image/num.png" style="width:33rpx; height:33rpx;"></image> PointNum:{{watchers_count}}</view>
+<view class="contentTitle"><image src="../../image/contentTitle.png" style="width:33rpx; height:33rpx;"></image> 介绍</view>
+<view class="content">{{description}}</view>
+<view class="copy" bindtap='copyText' data-text="{{url}}"><view><image src="../../image/copy.png" style="width:33rpx; height:33rpx;"></image> 复制</view>
+<view style="margin-top: 5rpx;">{{url}}</view>
+</view>
+<view style="margin-left: 315rpx;margin-right:315rpx; color: rgb(185, 184, 184);">点击复制</view>
+<view  style="margin-left: 325rpx;margin-right:325rpx; color: rgb(185, 184, 184);">{{desktop}}</view>
+</view>

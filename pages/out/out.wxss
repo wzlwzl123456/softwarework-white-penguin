@@ -1,1 +1,33 @@
-/* pages/out/out.wxss */
+@import "../../wxParse/wxParse.wxss";
+
+
+.t_title{
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 10%;
+    width: 80%;
+}
+.t_date{
+    font-size: medium;
+    margin-left: 70%;
+    width: 30%;
+    color: red;
+}
+.t_url{
+    font-size: medium;
+    margin-left: 10%;
+    width: 80%;
+    color: dodgerblue;
+}
+
+.t_text{
+    font-size: medium;
+    margin-left: 10%;
+    width: 80%;
+    /* overflow-y: scroll; */
+    display: flex;
+    /*显示滚动条*/
+}
+.whiteBox{
+    height: 5%;
+}

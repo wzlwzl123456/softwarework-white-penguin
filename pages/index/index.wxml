@@ -7,25 +7,27 @@
 <swiper autoplay interval="2500" indicator-dots indicator-color="#0094ff" indicator-active-color="#ff0094" circular>
     <swiper-item wx:for="{{swiperList}}" wx:key="id">
         <navigator url="/pages/item/item">
-            <image mode="widthFix" src="{{item.src}}" />
+            <image class="item" mode="widthFix" src="{{item.src}}" />
         </navigator>
     </swiper-item>
 </swiper>
 <!-- 轮播图 结束 -->
 <!-- 热门文章推送开始 -->
-<view wx:for="{{articleList}}" data-index="{{index}}" bindtap="gotoURL" class="first_tab">
-    <navigator class="article" url="/pages/article/article">
-        <!-- 上方文章信息 -->
-        <view class="titlebox">
-            <view class="title">{{item.blogTitle}}</view>
-            <view class="collect" catchtap="sendLike" data-index="{{index}}">
-                <image src="../../images/heart.png"></image>
-                <view class="collect_text">收藏</view>
-            </view>
+<view wx:for="{{articleList}}" wx:key="id" data-index="{{index}}" bindtap="gotoURL" class="first_tab">
+    <view class="tr_writeBox"></view>
+    <!-- 上方文章信息 -->
+    <view class="titlebox">
+        <view class="title">{{item.blogTitle}}</view>
+        <view class="collect" catchtap="sendLike" data-index="{{index}}">
+            
+            <image mode="widthFix" wx:if="{{_arr[index]}}"  src="https://i.bmp.ovh/imgs/2021/12/95e57a5e486b6fbb.png"></image>
+            <image mode="widthFix" wx:else src="https://i.bmp.ovh/imgs/2021/12/52233ede57b0cd28.png"></image>
         </view>
-        <!-- 下方文章信息 -->
-        <view class="brief">文章简介：{{item.blogBrief}}</view>
+    </view>
+    <!-- 下方文章信息 -->
+    <view class="tr_platformBox">
         <view class="tr_platform">osChina</view>
         <view class="tr_click">点击量：{{item.id}}</view>
-    </navigator>
+    </view>
+    <view class="tr_writeBox"></view>
 </view>
